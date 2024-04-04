@@ -1,9 +1,4 @@
-@media  (max-width: 1000px) {
 
-.full-grid-block {
-    grid-template-columns: 1fr 1fr 1fr;
-}
-}
 
 .main-title-div {
     height: 100vh;
@@ -201,14 +196,26 @@
 }
 
 .title-text {
-    font-size: 15px;
+    font-size: 16.5px;
     text-align: center;
+}
+
+@media only screen and (max-width: 420px) {
+    .title-text {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
 }
 
 @media only screen and (max-width: 400px) {
     .title-text {
-        margin-top: 10px;
-        margin-bottom: 15px;
+        font-size: 15px;
+    }
+}
+
+@media only screen and (min-width: 350px) and (max-width: 375px) {
+    .title-text {
+        font-size: 16px;
     }
 }
 
@@ -737,7 +744,7 @@ main.checkout {
     line-height: 30px;
     white-space: normal;
     max-width: 350px;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 
@@ -1172,8 +1179,9 @@ a.link-back-div {
     .OP-chicken-image-div img {
         height: 250px;
     }
-    .div-conditions p {
-        font-size: 18px;
+
+    .checkout-OP-img-div img {
+        height: 170px;
     }
 }
 @media only screen and (max-width: 480px) {
@@ -1279,13 +1287,14 @@ p.gold {
         margin-bottom: 40px;
         width: max(calc(100% - 4.8px), 250px);
     }
-    .checkout-OP-img-div img {
-        height: 170px;
-    }
-    .order-preview.checkout {
-        padding-bottom: 20px;
-    } 
 } 
+
+@media only screen and (max-width: 1000px) {
+    .order-preview.checkout {
+        padding-bottom: 30px;
+    } 
+
+}
 
 @media only screen and (max-width: 470px) {
     .primary-container {
