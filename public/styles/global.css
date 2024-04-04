@@ -40,6 +40,7 @@ body.checkout .colorline {
 body.index-page {
     padding: 0;
     margin: 0;
+    overflow-y: hidden;
 }
 
 body.index-page::-webkit-scrollbar {
