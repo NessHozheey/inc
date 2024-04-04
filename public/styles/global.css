@@ -3,6 +3,9 @@ html {
     min-height: 100%;
 }
 
+:root {
+  color-scheme: only light;
+}
 
 body {
    background-color: white;
@@ -38,9 +41,6 @@ body.checkout .colorline {
     background-image: linear-gradient(to right, rgb(255, 133, 46), red, rgb(255, 0, 230));
 }
 
-main {
-    
-}
 
 body.index-page::-webkit-scrollbar {
     display: none;
