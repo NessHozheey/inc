@@ -26,7 +26,7 @@ body.checkout
         .logo-div
           img.logo(src='icons/logo.svg' alt='')
         .inc-name-div
-          img.inc-name(src='icons/name.svg' alt='' height='15')
+          img.inc-name(src='icons/name.png' alt='' height='15')
         
     
   main#swap.transition-main.checkout
@@ -44,7 +44,6 @@ body.checkout
         p Після підтвердження контактних даних ми зв'яжемось з вами щодо деталей.   
         p Дякуємо, що ви з нами! 
     .primary-container
-
       form.clientForm(method="POST")
         p.title-contacts Контактні дані
         label.lastname(for="inputLastName") Прізвище
@@ -69,7 +68,7 @@ body.checkout
         input.inputHiddenBreed( type='hidden' name='order')
         button.buttonSubmit(correct="false" type="submit" disabled) Підтвердити замовлення
 
-      .subprimary-column-container
+      .subprimary-column-container.checker
         .div-ordered
         .checkout-title-order 
           p Замовлення
@@ -252,18 +251,32 @@ body.checkout
           
           //- Delivery info preview
           $(".show-conditions").on('click', () => {
+          $(".header").css({zIndex: 50})
+          
+          $(".link-back-div").css({
+            zIndex: '1'
+          })
+
+
           $(".order-preview").css({
             display: 'flex'
           })
           $(".js-shadow-maker").removeClass("shadow-maker-removed")
           $(".js-shadow-maker").addClass("shadow-maker")
-            setTimeout(() => {
-              $('.shadow-maker').css({
-                backdropFilter: 'blur(7px)'
-                })
+          setTimeout(() => {
+            $('.shadow-maker').css({
+              backdropFilter: 'blur(7px)',
+              position: 'fixed',
+              top: 0, bottom: 0, left: 0, right: 0
+
             })
-          })
+          }, 50)
           $(".x-order-preview").on('click', () => {
+          $(".link-back-div").css({
+            zIndex: '10000'
+          })
+            $(".header").css({zIndex: 10000})
+
                 $(".order-preview").css({
                   display: "none"
                 })
@@ -275,6 +288,7 @@ body.checkout
               $('.js-shadow-maker').removeClass("shadow-maker")
           }, 200)
           })
+        })
           //--------------------------------------------------------
           
           //--- (submitButton) ON HOVER
@@ -335,7 +349,7 @@ body.checkout
           })
           
           
-        })
+          })
         
   script(defer src="js/swup.js" type="module")
 

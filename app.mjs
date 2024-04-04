@@ -47,6 +47,9 @@ app.use(express.urlencoded({extended: true}))
 app.get('/', async (req, res) => {
   res.render('index')
 })
+app.get('/att', async (req, res) => {
+  res.render('att')
+})
 
 
 

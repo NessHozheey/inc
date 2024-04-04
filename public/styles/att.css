@@ -1,0 +1,55 @@
+.a-header {
+  position: fixed;
+  top: 0;
+  left: 0; right: 0;
+  height: 70px;
+  z-index: 1000;
+  background-color: lightpink;
+}
+
+@media only screen and (max-width: 1000px) {
+  .a-header {
+    height: max(7vw, 50px);
+    
+  }
+}
+
+
+.a-grid-div {
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+  column-gap: 2vw;
+  row-gap: 100px;
+  justify-items: center;
+  
+}
+
+.a-full-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.a-img-container {
+  height: max(25vw, 100px);
+
+}
+
+.a-img {
+
+  height: 100%;
+  transform: translate(-50%);
+  background-color: blue;
+  aspect-ratio: 1 / 1;
+}
+
+.a-text-div p {
+  text-align: center;
+}
+
+button {
+  padding: 0;
+  margin: 0;
+  width: 70%;
+}

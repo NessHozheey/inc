@@ -10,6 +10,7 @@ html {
 body {
    background-color: white;
    margin: 0;
+   padding: 0;
     padding-top: 80px;
     font-family:Arial;
     min-height: 100vh;
@@ -19,28 +20,26 @@ body {
 }
 
 body.assortment-page {
-    overflow-x: auto;
     position: relative;
 }
 
-@media only screen and (max-width: 425px) {
-    body.checkout {
-        padding-inline: 100px;
-    }
-    body.assortment-page {
-        padding-inline: 205px;
-    }
-}
 
 body.checkout {
     background-color: rgb(240, 240, 240);
-    margin-top: 40px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 body.checkout .colorline {
     background-image: linear-gradient(to right, rgb(255, 133, 46), red, rgb(255, 0, 230));
 }
 
+body.index-page {
+    padding: 0;
+    margin: 0;
+}
 
 body.index-page::-webkit-scrollbar {
     display: none;

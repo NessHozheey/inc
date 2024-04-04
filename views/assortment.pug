@@ -17,7 +17,7 @@ head
   link(href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Caveat:wght@400..700&family=Comfortaa:wght@700&family=Russo+One&display=swap" rel="stylesheet")
 
 //- all mixins
-
+  
 mixin ChooseCountry(infoBlock)
   script. 
     $(document).ready(() => {
@@ -72,7 +72,7 @@ mixin ActiveOrder(infoBlock)
     $(() => {
       $(".order-button-#{infoBlock.id}").on('click' , () => {
                     //order preview start// 
-
+        $(".header").css({zIndex: 50})
         $("input[name='eggQuantity']").attr('placeholder', '...')
         $("input[name='eggQuantity']").attr('typeID', `#{infoBlock.TypeID}`)
         
@@ -82,11 +82,11 @@ mixin ActiveOrder(infoBlock)
         $(".OP-breed").children().html(`#{infoBlock.Breed}`)
         if (`#{infoBlock.Breed}`.length >= 14) {
           $(".OP-breed").children().css({
-            fontSize: '42px'
+            fontSize: '38px'
           })
         } else {
           $(".OP-breed").children().css({
-            fontSize: '58px'
+            fontSize: '42px'
           })
         }
         $(".order-preview").css({
@@ -102,13 +102,17 @@ mixin ActiveOrder(infoBlock)
         $(".js-shadow-maker").addClass("shadow-maker")
         setTimeout(() => {
           $('.shadow-maker').css({
-            backdropFilter: 'blur(7px)'
+            backdropFilter: 'blur(7px)',
+            position: 'fixed',
+            top: 0, bottom: 0, left: 0, right: 0
+
           })
         }, 50)        
         $(".x-order-preview").on('click', () => {
           $(".order-preview").css({
             display: "none"
           })
+        $(".header").css({zIndex: 10000})
           $(".js-shadow-maker").addClass("shadow-maker-removed")
           setTimeout(() => {
             $('.shadow-maker').css({
@@ -243,11 +247,13 @@ mixin AddToCart
 mixin GenerateOfferBlock(infoBlock)
               .full-offer-block(class="full-offer-block-"+infoBlock.id)
                 .chicken-image-div
-                  img.chicken-image(width='200' height='200' src=infoBlock.ImageSRC)
+                  img.chicken-image(width='180' height='180' src=infoBlock.ImageSRC)
                   
                 .info-block
                   .title-text-div
-                    p.title-text #{infoBlock.Breed} 
+                    p(class=`title-text title-text-`+ infoBlock.id) #{infoBlock.Breed} 
+                      
+
                   .price-div
                     p(class="price price-"+infoBlock.id) #{infoBlock.Price}
                     .uah-per-div 
@@ -273,6 +279,10 @@ mixin GenerateOfferBlock(infoBlock)
                 +AnimateSelector(infoBlock) 
                 +ActiveOrder(infoBlock)
                 
+                 
+                    
+                  
+                
                 
 
 //- all mixins
@@ -294,9 +304,9 @@ body.assortment-page
         .logo-div
           img.logo(src='icons/logo.svg' alt='')
         .inc-name-div
-          img.inc-name(src='icons/name.svg' alt='')
+          img.inc-name(src='icons/name.png' alt='')
     .right-section
-      .right-tabs-section
+      .cart-div
         form(action="/checkout")
           button.div-img-cart
             img.img-cart(src='icons/caret.svg' alt='') 
@@ -311,7 +321,7 @@ body.assortment-page
       .OP-breed
         p
       .OP-chicken-image-div 
-        img(max-height="200px" height="100%")      
+        img
       .OP-infoBlock 
         .OP-actual-country-div 
           p.OP-actual-country Виробник
@@ -327,7 +337,7 @@ body.assortment-page
       button.OP-add-to-cart Додати у кошик
 
     .js-shadow-maker
-    section(class= x % 5 === 0 ? 'ALT-full-grid-block' : 'full-grid-block')
+    section(class='full-grid-block')
       form.navigation-bar(action="/assortment", method="GET")
         .navigation-button-link
           button(action="/assortment") Усе
@@ -340,7 +350,7 @@ body.assortment-page
         .navigation-button-link
           button(name="sorter", value ="Гуси") Гуси 
       form.search-form()
-        input.assortment-search(name="search" type="text", placeholder="Пошук..." id="assortment-search")
+        input.assortment-search(name="search" type="text", placeholder="Пошук...")
         .assortment-search-div
           button.btn-magnifier
             img.img-magnifier(src="icons/magnifier.svg" height="25px")
@@ -348,17 +358,34 @@ body.assortment-page
 
       -let prev
       each infoBlock in infoDB  
-        
+       
         if (!(prev && prev === infoBlock.Breed))
           +GenerateOfferBlock(infoBlock)
           - prev = infoBlock.Breed;
+          script. 
+            $(() => {
+
+                let $titleText = $(`.title-text-#{infoBlock.id}`)
+                if ($(document).width() > 400) {  
+                  if ($titleText.text().length >= 14) {
+                    $titleText.css({
+                      fontSize: '19px'
+                    })
+                  } else {
+                      $titleText.css({
+                        fontSize: '22px'
+                      })
+                    }
+                }
+            })
       +AddToCart 
       +SearchBar
       if (!infoDB[0]) 
           .no-results 
             p Немає результатів...
       
-          
+    script. 
+      $(() => {console.log($(document).width())})      
   footer.assortment-footer
     .foot-tel-block
       img(src="icons/phone.svg" height="18px")

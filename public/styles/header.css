@@ -1,7 +1,5 @@
 .header {
-    display: grid;
     display: flex;
-
     align-items: center;
     height: 79px;
     position: fixed;
@@ -11,10 +9,22 @@
     right: 0px;
     background-color: rgb(255, 255, 255);
     z-index: 10000;
+    padding-inline: 15px;
 }
 
+@media only screen and (max-width: 500px) {
+    .header {
+        
+        min-height: 60px;
+        padding-inline: 5px;
+    }
+
+}
+
+
+
 .colorline {
-    z-index: 1001;
+    z-index: 50;
     position: fixed;
     top: 0;
     right: 0;
@@ -28,30 +38,13 @@
     flex: 1;
     display: flex;
     padding-top: 5px;
-    margin-left: 8px;
     
 }
-
-
-
-.burger-menu-button {
-    display: flex;
-    padding-block: 6px;
-    border: none;
-    border-radius: 100px;
-    background-color: rgb(255, 255, 255);  
-    cursor: pointer;
-    transition: 0.22s;
-}
-
 
 .burger-menu-button:active {
     background-color: rgba(147, 147, 147, 0.232);
 }
 
-.img-burger-menu {
-    height: 33px;
-}
 
 
 .middle-section {
@@ -59,76 +52,38 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-right: 15px;
     
 }
 
 .right-section {
     flex: 1;
-    position: relative;
     display: flex;
-    justify-content: right;
-    min-width: 55px;
-    margin-right: 15px;
+    justify-content: end;
     
 }
 
-.right-tabs-section {
-    display: flex;
-    align-items: center;
-    justify-content: right;
-}
-
-
-.tab-viber {
+.cart-div {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: none;
-    transition: .10s;
+    height: 60px;
+    width: 60px;
 }
 
-.tab-viber:hover {
-    color: rgb(149, 0, 255);
-    border: none;
-    cursor: pointer;
-}
-
-
-.viber-link {
-
-    white-space: normal;
-    text-align: center;
-    line-height: 22px;
-    font-size: 18px;
-}
-
-
-
-
-.logo-div {
-    margin-right: 5px;
-    
-}
 
 .logo {
     height: 65px;
 }
 
+
+
 .inc-name-div {
    display: flex;
-  height: 55px;
   align-items: center;
-  margin-bottom: 10px;
-  
+ margin-bottom: 5px; 
     
 }
 
-.inc-name {
-    object-fit: cover;
-    flex: 1;
-   height: 100%;
-}
 
 .main-link {
     user-select: none;
@@ -142,7 +97,6 @@
     position: relative;
     margin: 0;
     background-color: rgba(185, 185, 185, 0.477);
-    padding-inline: 2px;
     padding: 3px 5px;
     border-radius: 150px;
     transition: .15s;
@@ -181,4 +135,27 @@
 
 .cart-eggs-quantity p {
     font-size: 13px;
+}
+
+@media only screen and (max-width: 375px) {
+    .tab-viber img {
+        height: 50px;
+    }
+    .div-img-cart {
+        padding: 1px 3px;
+    }
+    .cart-div {
+        height: 50px;
+        width: 50px;
+    }
+    .img-cart {
+        height: 35px;
+    }
+    .cart-eggs-quantity {
+        width: 25px;
+    }
+
+    .inc-name-div img {
+        height: 40px;
+    }
 }
