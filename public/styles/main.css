@@ -176,13 +176,13 @@
     min-height: 100px;
     aspect-ratio: 1 / 1;   
 }
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 480px) {
     .full-grid-block {
         column-gap: 0px;
     }
     img.chicken-image {
-    height: 130px;
-    width: 130px;
+        height: 130px;
+        width: 130px;
     }
     p.price {
         font-size: 25px;
@@ -221,7 +221,7 @@
 
 @media only screen and (min-width: 375px ) and (max-width: 700px) {
     .full-grid-block {
-        column-gap: 35px;
+        column-gap: 25px;
     }
 }
 
