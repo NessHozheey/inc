@@ -1297,6 +1297,9 @@ p.gold {
 }
 
 @media only screen and (max-width: 470px) {
+    .no-results p {
+        font-size: 10vw;
+    }
     .primary-container {
         width: 90vw;
     }

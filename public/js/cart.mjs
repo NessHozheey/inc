@@ -131,15 +131,21 @@ export function setItemsQuantity() {
   if (i > 4)
   $(".checkout-title-quantity").text(`${i} товарів`)
   if (  i == 0 || $(".checkCartPrice").text() == '0₴') {
-    
+    if ($(document).width() > 500) {
     $(".checkout-title-quantity").css({
       fontSize: '16px'
     })
+  } else {
+    $(".checkout-title-quantity").css({
+      fontSize: '13px'
+    })
+
+  }
     
     $(".checkout-title-quantity").text('Ви ще нічого не додавали до корзини.')
     $(".checkout-title-quantity-div").css({
       justifyContent: "center",
-      top: '140px',
+      top: '150px',
     })
     updatePriceDiv()
    
