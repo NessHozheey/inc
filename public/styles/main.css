@@ -218,7 +218,7 @@
     }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 374px) {
     .full-grid-block {
         column-gap: 10px;
     }
