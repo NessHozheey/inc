@@ -1,7 +1,6 @@
 import express from 'express'
 import mysql from 'mysql2'
 import dotenv from 'dotenv'
-import jsonDB from './Database/eggs_assortment.json' with {type: 'json'}
 dotenv.config()
 
 export const pool = mysql.createPool({
@@ -12,7 +11,7 @@ export const pool = mysql.createPool({
 }).promise();
 
 export async function getFromJsonDB (term) {
-  
+
 }
 
 
