@@ -1,0 +1,344 @@
+doctype html
+
+head
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js")
+  link(rel='preconnect' href='https://fonts.googleapis.com')
+  link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Кошик
+  link(rel='stylesheet' href='styles/global.css')
+  link(rel='stylesheet' href='styles/header.css')
+  link(rel='stylesheet' href='styles/main.css')
+  link(rel='stylesheet' href='styles/navigation-bar.css')
+  link(rel="preconnect" href="https://fonts.googleapis.com")
+  link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+  link(href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Caveat:wght@400..700&&family=Unbounded:wght@200..900&family=Comfortaa:wght@700&family=Russo+One&display=swap" rel="stylesheet")
+
+
+
+
+body.checkout
+  .colorline
+  header.header
+    .middle-section
+      a.main-link(href='/')
+        .logo-div
+          img.logo(src='icons/logo.svg' alt='')
+        .inc-name-div
+          img.inc-name(src='icons/name.svg' alt='' height='15')
+        
+    
+  main#swap.transition-main.checkout
+    a.link-back-div(href="/assortment")  
+      img(src="icons/arrow-left.svg" height="40px")
+    .js-shadow-maker
+    .order-preview.checkout
+      .x-order-preview 
+       p x
+      .checkout-OP-img-div
+        img(src="icons/logo.png" height='200px')
+
+      .div-conditions
+        p Замовлення виконується протягом 2-7 робочих днів. 
+        p Після підтвердження контактних даних ми зв'яжемось з вами щодо деталей.   
+        p Дякуємо, що ви з нами! 
+    .primary-container
+
+      form.clientForm(method="POST")
+        p.title-contacts Контактні дані
+        label.lastname(for="inputLastName") Прізвище
+          p.star *
+        input#inputLastName(correct="false" type="text" maxlength='18' pattern="[^\s]*" name="Lastname")
+        label.firstname(for="inputFirstName" ) Ім'я
+          p.star *
+        input#inputFirstName(correct="false" type="text" maxlength="15" pattern="[^\s]*" name="Firstname")
+        label.tel(for="inputTel") Телефон 
+          p.star *
+        .tel-div
+          .code-div
+            p.country-code +38
+          input#inputTel(correct="false" type="tel", name="Tel" placeholder="(__) ___-__-__" )
+        label.city(for="inputCity" ) Місто доставки 
+          p.star *
+        input#inputCity(correct="false" type="text", name="City", maxlength="70")
+        label.post(for="inputPostal" ) Відділення Нової Пошти
+          p.star *
+          
+        input#inputPostal(correct="false" type="text", name="Postal" maxlength="10")
+        input.inputHiddenBreed( type='hidden' name='order')
+        button.buttonSubmit(correct="false" type="submit" disabled) Підтвердити замовлення
+
+      .subprimary-column-container
+        .div-ordered
+        .checkout-title-order 
+          p Замовлення
+        .checkout-title-quantity-div
+          p.checkout-title-quantity
+          p.checkout-quantity-eggs 
+        .div-check
+          .titles
+            p Вартість замовлення: 
+            p Вартість комплектації: 
+            p До оплати (без доставки):
+          .numbers 
+            p.checkCartPrice 
+            p.checkDeliveryPrice 70₴
+            p.checkTotalPrice 
+        button.show-conditions Умови відправки замовлень
+
+      script. 
+        $(() => {
+          $(".buttonSubmit").removeAttr('disabled')
+          function limitInputVal (input, limitNumber) {
+            
+            if (input.val().length > limitNumber) {
+              input.val(input.val().substring(0, limitNumber))
+            }
+          }
+
+          //- INPUT NAME LIMITS
+          let inputName = $("input#inputLastName, input#inputFirstName")
+          let iLastName  =$("input#inputLastName") 
+          let iFirstName =$("input#inputFirstName")  
+          let inputTel = $("input#inputTel")
+          let inputCity = $("input#inputCity") 
+          let inputPostal = $("input#inputPostal")
+
+          
+          
+          inputName.keypress(e => {
+            
+            let verified = String.fromCharCode(e.which).match(/[а-яА-ЯіІїЇєЄ-]/);
+            if (!verified) {
+            e.preventDefault();
+            }
+          })
+        iLastName.on('keydown keyup', () => {
+            if(iLastName.val().length > 2) {
+              $(".lastname").children('p').css({
+                fontSize: '13px'
+              }).text("✔️")
+              iLastName.attr('correct', 'true')
+            }
+            else {
+              $(".lastname").children('p').css({
+                fontSize: '20px'
+              }).text("*")
+              iLastName.attr('correct', 'false')
+            }
+        })
+
+        iFirstName.on('keydown keyup', () => {
+            if(iFirstName.val().length > 2) {
+              $(".firstname").children('p').css({
+                fontSize: '13px'
+              }).text("✔️")
+              iFirstName.attr('correct', 'true')
+            }
+              
+            else {
+              $(".firstname").children('p').css({
+                fontSize: '20px'
+              }).text("*")
+              iFirstName.attr('correct', 'false')
+            }
+        })
+  
+          //----------------------
+            
+          //- INPUT TEL LIMITS
+
+
+          inputTel.keypress(e => {
+            let verified = String.fromCharCode(e.which).match(/[0-9]/);
+            if (!verified) {
+            e.preventDefault();
+            }
+          })
+         
+        
+          inputTel.on('keyup keydown', (e => {
+            $("input#inputTel").attr('value1', '38' + inputTel.val())
+            limitInputVal(inputTel, 10)
+            
+            if(inputTel.val().length == 10) {
+              $("label.tel").children('p').css({
+                fontSize: '13px'
+              }).text("✔️")
+              inputTel.attr('correct', 'true')
+            }
+              
+            else {
+              $("label.tel").children('p').css({
+                fontSize: '20px'
+              }).text("*")
+              inputTel.attr('correct', 'false')
+              
+            }
+            
+          }))
+
+
+          //---------------------------
+          
+          //-   CITY INPUT LIMITS  
+
+
+         inputCity.keypress(e => {
+            let verified = String.fromCharCode(e.which).match(/[а-яА-Яіїє ,.-]/);
+            if (!verified) {
+            e.preventDefault();
+            }
+
+         })
+
+         inputCity.on('keyup keydown', () => {
+           
+           if(inputCity.val().length > 2) {
+              $("label.city").children('p').css({
+                fontSize: '13px'
+              }).text("✔️")
+              inputCity.attr('correct', 'true')
+           }
+            else {
+              $("label.city").children('p').css({
+                fontSize: '20px'
+              }).text("*") 
+              inputCity.attr('correct', 'false')
+         }})
+
+          //--------------------------- 
+          //-     INPUT POSTAL
+
+          inputPostal.keypress(e => {
+            let verified = String.fromCharCode(e.which).match(/[0-9]/);
+            if (!verified) {
+            e.preventDefault();
+            }
+          })
+          
+         inputPostal.on('keyup keydown', () => {
+           if(inputPostal.val().length >= 1) {
+              $("label.post").children('p').css({
+                fontSize: '13px'
+              }).text("✔️")
+              inputPostal.attr('correct', 'true')
+           }
+            else {
+              $("label.post").children('p').css({
+                fontSize: '20px'
+              }).text("*") 
+              inputPostal.attr('correct', 'false')
+         }})
+
+
+
+          //--------------------------
+        });    
+      script(type="module"). 
+        import {cart, removeFromCart, cartToHTML, setItemsQuantity, totalQuantity, calculateCartPrice} from './js/cart.mjs'
+        $(()=>{
+           $("#inputLastName").val(null)
+            $("#inputFirstName").val(null)
+            $("#inputTel").val(null)
+            $("#inputCity").val(null)
+            $("#inputPostal").val(null)
+
+            //- ordered-div functionality
+          cartToHTML()
+          
+          //---------------------------------------------------
+          
+          //- Delivery info preview
+          $(".show-conditions").on('click', () => {
+          $(".order-preview").css({
+            display: 'flex'
+          })
+          $(".js-shadow-maker").removeClass("shadow-maker-removed")
+          $(".js-shadow-maker").addClass("shadow-maker")
+            setTimeout(() => {
+              $('.shadow-maker').css({
+                backdropFilter: 'blur(7px)'
+                })
+            })
+          })
+          $(".x-order-preview").on('click', () => {
+                $(".order-preview").css({
+                  display: "none"
+                })
+          $(".js-shadow-maker").addClass("shadow-maker-removed")
+            setTimeout(() => {
+              $('.shadow-maker').css({
+                backdropFilter: 'none'
+              })
+              $('.js-shadow-maker').removeClass("shadow-maker")
+          }, 200)
+          })
+          //--------------------------------------------------------
+          
+          //--- (submitButton) ON HOVER
+          $(".buttonSubmit").hover(() => {
+            $("form.clientForm").removeClass('formNotHovered')
+            $("p.title-contacts").removeClass('formNotHovered')
+            $("form.clientForm").addClass('formHovered')
+            $("p.title-contacts").addClass('formHovered')
+          }, () => {
+            $("form.clientForm").addClass('formNotHovered')
+            $("p.title-contacts").addClass('formNotHovered')
+            $("form.clientForm").removeClass('formHovered')
+            $("p.title-contacts").removeClass('formHovered')
+          })
+          //------------------------------------------------------
+          $("form.clientForm").on('submit', (e) => {            
+
+
+            if ( $("#inputLastName").attr('correct') === 'true' &&
+                 $("#inputFirstName").attr('correct') === 'true' && 
+                 $("#inputTel").attr('correct') === 'true' && 
+                 $("#inputCity").attr('correct') === 'true' &&
+                 $("#inputPostal").attr('correct') === 'true' && 
+                            totalQuantity() !== 0
+                  ) {
+                 
+                    
+              
+            let info = ''
+            let iter = 1
+             cart.forEach(e => {
+              info += ` ${iter}: ${e.Breed} (${(e.Country).substring(10,12)}) - ${e.Quantity} шт. (по ${e.Price} грн) 
+               `
+              iter++;
+             })
+             $(".inputHiddenBreed").val(info)
+             $("button.buttonSubmit").text("Замовлення підтверджено!");
+             
+           
+              return
+            
+            }
+            
+            if (totalQuantity() === 0) {
+            $(".buttonSubmit, .div-ordered, .checkout-title-order").addClass("submitWarning")
+            setTimeout(() => {
+              $(".buttonSubmit, .div-ordered, .checkout-title-order").removeClass("submitWarning")
+            },2000)
+
+            e.preventDefault()
+            return
+            }
+            $(".buttonSubmit").addClass("submitWarning")
+            setTimeout(() => {
+              $(".buttonSubmit").removeClass("submitWarning")
+            },2000)
+            e.preventDefault()
+          })
+          
+          
+        })
+        
+  script(defer src="js/swup.js" type="module")
+
+noscript
+  style(type="text/css")
+  body(style='display: none')

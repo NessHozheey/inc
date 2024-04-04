@@ -1,0 +1,158 @@
+doctype html
+
+head
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js")
+  link(rel='preconnect' href='https://fonts.googleapis.com')
+  link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Кошик
+  link(rel='stylesheet' href='styles/global.css')
+  link(rel='stylesheet' href='styles/header.css')
+  link(rel='stylesheet' href='styles/main.css')
+  link(rel='stylesheet' href='styles/navigation-bar.css')
+  link(rel="preconnect" href="https://fonts.googleapis.com")
+  link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+  link(href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Caveat:wght@400..700&&family=Unbounded:wght@200..900&family=Comfortaa:wght@700&family=Russo+One&display=swap" rel="stylesheet")
+
+
+
+
+body.checkout
+  .colorline
+  header.header
+    .middle-section
+      a.main-link(href='/')
+        .logo-div
+          img.logo(src='icons/logo.svg' alt='')
+        .inc-name-div
+          img.inc-name(src='icons/name.svg' alt='' height='15')
+        
+    
+  main#swap.transition-main.checkout
+    a.link-back-div(href="/assortment")  
+      img(src="icons/arrow-left.svg" height="40px")
+    .js-shadow-maker
+    .order-preview.checkout
+      .x-order-preview 
+       p x
+      .checkout-OP-img-div
+        img(src="icons/logo.png" height='200px')
+
+      .div-conditions
+        p Ваше замовлення відправлено на опрацювання!
+        p Через деякий час ми зв'яжемось з вами. 
+        p Дякуємо, що обрали Інкубаторію!
+    .primary-container
+
+      form.clientForm(method="POST")
+        p.title-contacts Контактні дані
+        label.lastname(for="Lastname") Прізвище
+          p.tick ✔️
+        input#inputLastName(correct="false" type="text" maxlength='18' pattern="[^\s]*" name="Lastname")
+        label.firstname(for="Firstname" ) Ім'я
+          p.tick ✔️
+        input#inputFirstName(correct="false" type="text" maxlength="15" pattern="[^\s]*" name="Firstname")
+        label.tel(for="Tel") Телефон 
+          p.tick ✔️
+        .tel-div
+          .code-div
+            p.country-code +38
+          input#inputTel(correct="false" type="tel", name="Tel" placeholder="(__) ___-__-__" )
+        label.city(for="City" ) Місто доставки 
+          p.tick ✔️
+        input#inputCity(correct="false" type="text", name="City", maxlength="70")
+        label.post(for="Postal" ) Відділення Нової Пошти
+          p.tick ✔️
+          
+        input#inputPostal(correct="false" type="text", name="Postal" maxlength="10")
+        input.inputHiddenBreed( type='hidden' name='order')
+        button.buttonSubmit(correct="false" type="submit") Замовлення підтверджено!
+
+      .subprimary-column-container
+        .div-ordered
+        .checkout-title-order 
+          p Замовлення
+        .checkout-title-quantity-div
+          p.checkout-title-quantity
+          p.checkout-quantity-eggs 
+        .div-check
+          .titles
+            p Вартість замовлення: 
+            p Вартість комплектації: 
+            p До оплати (без доставки):
+          .numbers 
+            p.checkCartPrice 
+            p.checkDeliveryPrice
+            p.checkTotalPrice 
+        button.show-conditions Замовлення опрацьовується...
+   
+      script(type="module"). 
+        import {cart, removeFromCart, cartToHTML, setItemsQuantity, totalQuantity, clearCart, calculateCartPrice} from './js/cart.mjs'
+        $(() => {
+            cartToHTML()
+            clearCart()
+            $(".changePick").hide()
+            $(".trashImg").hide()
+            setTimeout(() => {
+              $("button.show-conditions").trigger('click')
+            }, 2000)
+            
+            
+            $(".clientForm, p.title-contacts").css({
+              border: "2px solid lightgreen",
+              boxShadow: "0 0 10px lightgreen"
+            })
+           $("#inputLastName").val(null).prop("disabled", "true")
+            $("#inputFirstName").val(null).prop("disabled", "true")
+            $("#inputTel").val(null).prop("disabled", "true")
+            $("#inputCity").val(null).prop("disabled", "true")
+            $("#inputPostal").val(null).prop("disabled", "true")
+
+            $(".buttonSubmit").css({
+              border: "2px solid lightgreen",
+              backgroundColor: "lightgreen",
+              color: "white"
+            })
+            //- ordered-div functionality
+          
+          
+          //---------------------------------------------------
+          
+          //- Delivery info preview
+          $(".show-conditions").on('click', () => {
+          $(".order-preview").css({
+            display: 'flex'
+          })
+          $(".js-shadow-maker").removeClass("shadow-maker-removed")
+          $(".js-shadow-maker").addClass("shadow-maker")
+            setTimeout(() => {
+              $('.shadow-maker').css({
+                backdropFilter: 'blur(7px)'
+                })
+            })
+          })
+          $(".x-order-preview").on('click', () => {
+                $(".order-preview").css({
+                  display: "none"
+                })
+          $(".js-shadow-maker").addClass("shadow-maker-removed")
+            setTimeout(() => {
+              $('.shadow-maker').css({
+                backdropFilter: 'none'
+              })
+              $('.js-shadow-maker').removeClass("shadow-maker")
+          }, 200)
+          })
+          //--------------------------------------------------------
+          
+          
+          
+          $("form.clientForm").on('submit', (e) => {            
+            e.preventDefault()
+          })
+          
+          
+        })
+        
+  script(defer src="js/swup.js" type="module")

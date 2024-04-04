@@ -1,0 +1,94 @@
+html {
+    scroll-behavior: smooth;
+    min-height: 100%;
+}
+
+
+body {
+   background-color: white;
+   margin: 0;
+    padding-top: 80px;
+    font-family:Arial;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+body.assortment-page {
+    overflow-x: auto;
+    position: relative;
+}
+
+@media only screen and (max-width: 425px) {
+    body.checkout {
+        padding-inline: 100px;
+    }
+    body.assortment-page {
+        padding-inline: 205px;
+    }
+}
+
+body.checkout {
+    background-color: rgb(240, 240, 240);
+    margin-top: 40px;
+}
+
+body.checkout .colorline {
+    background-image: linear-gradient(to right, rgb(255, 133, 46), red, rgb(255, 0, 230));
+}
+
+main {
+    
+}
+
+body.index-page::-webkit-scrollbar {
+    display: none;
+}
+
+a {
+ all: inherit;
+ cursor: pointer;
+}
+
+button {
+    font-family: Comfortaa;
+}
+
+a {
+    text-decoration: none;
+}
+
+p,
+h1,h2,h3,h4,h5 {
+    font-family: Comfortaa, Arial;
+    font-weight: 600;
+    margin: 0;
+    text-align: center;
+    font-size: 20px;
+    white-space: nowrap ;
+}
+
+
+
+html.is-changing .transition-main {
+    transition: opacity 250ms; 
+}
+
+html.is-animating .transition-main {
+    opacity: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  appearance: textfield;
+
+}
+
+

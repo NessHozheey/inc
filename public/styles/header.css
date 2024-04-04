@@ -1,0 +1,184 @@
+.header {
+    display: grid;
+    display: flex;
+
+    align-items: center;
+    height: 79px;
+    position: fixed;
+    box-shadow: 0 1px 7px rgba(0, 0, 0, 0.114);
+    top: 5px;
+    left: 0px;
+    right: 0px;
+    background-color: rgb(255, 255, 255);
+    z-index: 10000;
+}
+
+.colorline {
+    z-index: 1001;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 5px;
+    
+    background-image: linear-gradient(to right, rgb(255, 0, 230),red, rgb(255, 133, 46));
+}
+
+.left-section {
+    flex: 1;
+    display: flex;
+    padding-top: 5px;
+    margin-left: 8px;
+    
+}
+
+
+
+.burger-menu-button {
+    display: flex;
+    padding-block: 6px;
+    border: none;
+    border-radius: 100px;
+    background-color: rgb(255, 255, 255);  
+    cursor: pointer;
+    transition: 0.22s;
+}
+
+
+.burger-menu-button:active {
+    background-color: rgba(147, 147, 147, 0.232);
+}
+
+.img-burger-menu {
+    height: 33px;
+}
+
+
+.middle-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 15px;
+    
+}
+
+.right-section {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: right;
+    min-width: 55px;
+    margin-right: 15px;
+    
+}
+
+.right-tabs-section {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+
+.tab-viber {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    transition: .10s;
+}
+
+.tab-viber:hover {
+    color: rgb(149, 0, 255);
+    border: none;
+    cursor: pointer;
+}
+
+
+.viber-link {
+
+    white-space: normal;
+    text-align: center;
+    line-height: 22px;
+    font-size: 18px;
+}
+
+
+
+
+.logo-div {
+    margin-right: 5px;
+    
+}
+
+.logo {
+    height: 65px;
+}
+
+.inc-name-div {
+   display: flex;
+  height: 55px;
+  align-items: center;
+  margin-bottom: 10px;
+  
+    
+}
+
+.inc-name {
+    object-fit: cover;
+    flex: 1;
+   height: 100%;
+}
+
+.main-link {
+    user-select: none;
+    padding-top: 10px;
+    display: flex;
+}
+
+.div-img-cart {
+    border: none;
+    box-shadow: 0 0 3px rgb(0, 0, 0);
+    position: relative;
+    margin: 0;
+    background-color: rgba(185, 185, 185, 0.477);
+    padding-inline: 2px;
+    padding: 3px 5px;
+    border-radius: 150px;
+    transition: .15s;
+}
+
+.div-img-cart:hover {
+    background-color: rgba(185, 185, 185, 0.263);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.49);
+    padding: 5px 7px;
+    cursor: pointer;
+}
+
+.div-img-cart:active {
+    border: 1px solid rgba(0, 0, 0, 0.415);
+    background-color: rgba(185, 185, 185, 0.849);
+}
+
+.img-cart {
+    height: 38px;
+    transition: 2s;
+}
+
+.cart-eggs-quantity {
+
+    width: 27px;
+    position: absolute;
+    top: 50%;
+    transform: translate(21%);
+    background-color: rgb(255,230,184);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+} 
+
+.cart-eggs-quantity p {
+    font-size: 13px;
+}

@@ -1,0 +1,74 @@
+ .navigation-bar {
+   position: absolute;
+   transition: 0.15s;
+    display: flex;
+    width: max(40vw, 300px);
+    right: 50%;
+    justify-content: space-around;
+    transform: translate(50%);
+    background-color: transparent;
+    z-index: 40;
+    
+    
+ }
+
+@media only screen and (max-width: 500px){
+}
+
+ .navigation-button-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none; 
+ }
+
+ .navigation-button-link button {
+  transition: 0.15s;
+  background-color: transparent;
+  font-size: max(1vw, 15px);
+  color: rgb(85, 85, 85);
+  height: 40px;
+  border: none;
+  border-bottom: solid 2px white;
+ }
+
+.navigation-button-link button:hover {
+   color: rgb(241, 145, 0);
+   cursor: pointer;
+   border-bottom: solid 2px rgb(241, 145, 0);
+}
+
+
+
+.icon-img-div {
+    display: flex;
+    margin-right: 12px;
+}
+
+ .navigation-button-link img {
+    height: 0px;
+
+ }
+
+ .navigation-button-link p {
+   font-size: 21px; 
+ }
+
+
+
+ .shadow-maker {
+   position: fixed;
+   top: 78px;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   background-color: rgba(0, 0, 0, 0.603);
+   transition: 0.3s;
+   transition: background-color 0.3s;
+   z-index: 50;
+   
+ }
+
+ .shadow-maker-removed {
+   background-color: rgba(255, 255, 255, 0);
+ }

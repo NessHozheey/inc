@@ -1,0 +1,371 @@
+doctype html
+
+head
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js")
+  link(rel='preconnect' href='https://fonts.googleapis.com')
+  link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Інкубаторія
+  link(rel='stylesheet' href='styles/global.css')
+  link(rel='stylesheet' href='styles/header.css')
+  link(rel='stylesheet' href='styles/main.css')
+  link(rel='stylesheet' href='styles/navigation-bar.css')
+  link(rel='stylesheet' href='styles/footer.css')
+  link(rel="preconnect" href="https://fonts.googleapis.com")
+  link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+  link(href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Caveat:wght@400..700&family=Comfortaa:wght@700&family=Russo+One&display=swap" rel="stylesheet")
+
+//- all mixins
+
+mixin ChooseCountry(infoBlock)
+  script. 
+    $(document).ready(() => {
+      let ActualCountry = $(".actual-country-#{infoBlock.id}")
+      let OptionalCountry = $(".optional-country-#{infoBlock.id}")
+      let TempCountry = $(".temporary-#{infoBlock.id}")
+
+      let ActualPriceDiv = $(".price-#{infoBlock.id}") 
+      let OptionalPriceValue = $(".temporary-#{infoBlock.id}").attr("value")
+      let DefaultPriceValue = #{infoBlock.Price}
+      let DefaultCountry = '#{infoBlock.Country}'
+      ActualPriceDiv.attr("value", DefaultPriceValue)
+      OptionalCountry.click (() => {
+        TempCountry.attr("src", ActualCountry.attr("src")).attr("value", ActualCountry.attr("value"))
+        ActualCountry.attr("src", OptionalCountry.attr("src")).attr("value", OptionalCountry.attr("value"))
+        OptionalCountry.attr("src", TempCountry.attr("src")).attr("value", TempCountry.attr("value"))
+        $('.country-choice-#{infoBlock.id}').animate({
+          height: 'hide'
+      })
+        
+          
+        
+
+        if (ActualCountry.attr("value") !== DefaultCountry) {
+          ActualPriceDiv.attr('value', `${OptionalPriceValue}`)
+          ActualPriceDiv.html(`${OptionalPriceValue}`) }
+        else {
+          ActualPriceDiv.attr('value', `${DefaultPriceValue}`)
+          ActualPriceDiv.html(`${DefaultPriceValue}`) }
+        })
+    })
+mixin AnimateSelector(infoBlock) 
+  script. 
+    $(document).ready(() => {
+      let CountryTickDiv = $(`.country-tick-div-#{infoBlock.id}`)
+      let CountryImageDiv = $(`.country-tick-div-#{infoBlock.id}`).siblings(".country-image-div")
+
+      CountryTickDiv.click(() => {
+        $('.country-choice-#{infoBlock.id}').animate({
+          height: 'toggle'
+        })
+      })
+
+      CountryImageDiv.click(() => {
+        $('.country-choice-#{infoBlock.id}').animate({
+          height: 'toggle'
+        })
+      })
+    })
+mixin ActiveOrder(infoBlock) 
+  script(type="module"). 
+    $(() => {
+      $(".order-button-#{infoBlock.id}").on('click' , () => {
+                    //order preview start// 
+
+        $("input[name='eggQuantity']").attr('placeholder', '...')
+        $("input[name='eggQuantity']").attr('typeID', `#{infoBlock.TypeID}`)
+        
+        $("input[name='eggQuantity']").val(null)
+
+        $(".OP-chicken-image-div").children().attr("src", "#{infoBlock.ImageSRC}")
+        $(".OP-breed").children().html(`#{infoBlock.Breed}`)
+        if (`#{infoBlock.Breed}`.length >= 14) {
+          $(".OP-breed").children().css({
+            fontSize: '42px'
+          })
+        } else {
+          $(".OP-breed").children().css({
+            fontSize: '58px'
+          })
+        }
+        $(".order-preview").css({
+          display: "flex"
+        })
+        $("input[name='eggQuantity']").focus() 
+        let actualCountry = $('.actual-country-#{infoBlock.id}').attr("src")
+        let actualPrice = $('.price-#{infoBlock.id}').attr("value")
+
+        $(".OP-actual-country").children().attr('src', actualCountry)
+        $('.OP-price').html(actualPrice)         
+        $(".js-shadow-maker").removeClass("shadow-maker-removed")
+        $(".js-shadow-maker").addClass("shadow-maker")
+        setTimeout(() => {
+          $('.shadow-maker').css({
+            backdropFilter: 'blur(7px)'
+          })
+        }, 50)        
+        $(".x-order-preview").on('click', () => {
+          $(".order-preview").css({
+            display: "none"
+          })
+          $(".js-shadow-maker").addClass("shadow-maker-removed")
+          setTimeout(() => {
+            $('.shadow-maker').css({
+              backdropFilter: 'none'
+            })
+            $('.js-shadow-maker').removeClass("shadow-maker")
+        }, 200)
+            $(".OP-add-to-cart").html("Додати у кошик")
+            $(".OP-add-to-cart").removeClass("confirmed")
+            $(".OP-add-to-cart").prop('disabled', false)
+            $("input[name='eggQuantity']").prop('disabled', false)
+            $("input[name='eggQuantity']").removeClass('input-locked')
+        })
+      })
+                  // order preview finish // 
+
+       
+          
+      })
+mixin SearchBar
+  script. 
+    $(() => {
+      $('.btn-magnifier').on('click', () => {
+        if (!$('.assortment-search').val()) {
+          $('.assortment-search').focus()
+          $('.btn-magnifier').attr('disabled', 'true') 
+          setTimeout( () => {
+          $('.btn-magnifier').removeAttr('disabled')
+          }, 1)
+        } else {
+          $("")
+        } 
+      })
+    })
+mixin AddToCart
+  script(type="module"). 
+    import {cart, addToCart, showCart, clearCart, updateQuantity, totalQuantity} from './js/cart.mjs'
+    $(() => {
+
+        if (cart.length > 0) 
+          updateQuantity()
+      
+
+        let iEggQuantity =$("input[name='eggQuantity']")
+
+        iEggQuantity.keypress(e => {
+          let verified = String.fromCharCode(e.which).match(/[0-9]/);
+          if (!verified) {
+          e.preventDefault();
+          }
+        })
+
+       $(".OP-add-to-cart").on('click', () => {
+
+          let numTypeID = Number(iEggQuantity.attr('typeID'))
+          let chickMinOrder = 30
+          let GooseNTurkeyMinOrder = 10
+          let duckMinOrder = 15
+
+          function inputChecker(minOrder) {
+            if (!iEggQuantity.val() ||!$.isNumeric(iEggQuantity.val()) ) {
+              iEggQuantity.addClass('warningFocus')
+                .trigger("focus")
+              
+              setTimeout( () => {
+                iEggQuantity.removeClass('warningFocus')},1000)
+            }
+            else if ( 
+            (iEggQuantity.val() < minOrder || iEggQuantity.val() > 7000) ) {
+              
+              iEggQuantity.addClass('red-border-warning')
+            
+              setTimeout( () => {
+                iEggQuantity.removeClass('red-border-warning')},1000)
+                iEggQuantity.val(null)
+                  .attr('placeholder', `>${(minOrder - 1)}`)
+                
+            }
+            else if (( totalQuantity() + Number(iEggQuantity.val()) ) > 7000) {
+              $(".OP-add-to-cart").css({
+                backgroundColor: 'red'
+              },500).text("Ліміт: 7000 шт.")
+              iEggQuantity.val(null)
+              setTimeout( () => {
+                $(".OP-add-to-cart").css({
+                  backgroundColor: 'black'
+                }).text("Додати у кошик")
+              }, 1000)
+            }
+            
+            else {
+              let eggQuantity = iEggQuantity.val()
+              let actualBreed = $('.OP-breed').children('p').html()
+              let actualCountry = $('.OP-actual-country').children('img').attr('src')
+              let actualPrice = $('.OP-price').html()
+              let ImageSRC = $('.OP-chicken-image-div').children('img').attr('src')
+              let TypeID = Number(iEggQuantity.attr('typeID'))
+
+              addToCart(actualBreed, TypeID, ImageSRC, actualCountry, actualPrice, eggQuantity)
+              $(".OP-add-to-cart").addClass('confirmed')
+              $(".OP-add-to-cart").html("Додано!")
+              iEggQuantity.addClass('input-locked')
+
+              $(".OP-add-to-cart").prop('disabled', true)
+              iEggQuantity.prop('disabled', true)
+              setTimeout(() => {
+                $('.x-order-preview').trigger('click')
+              },700)
+              updateQuantity()
+            }
+          }
+        if (numTypeID < 10) {
+
+          inputChecker(chickMinOrder)
+        }
+        if (numTypeID === 10) {
+          inputChecker(duckMinOrder)
+        }
+        if (numTypeID > 10) {
+          inputChecker(GooseNTurkeyMinOrder)
+        }
+
+
+
+
+
+
+
+        })
+
+    })
+mixin GenerateOfferBlock(infoBlock)
+              .full-offer-block(class="full-offer-block-"+infoBlock.id)
+                .chicken-image-div
+                  img.chicken-image(width='200' height='200' src=infoBlock.ImageSRC)
+                  
+                .info-block
+                  .title-text-div
+                    p.title-text #{infoBlock.Breed} 
+                  .price-div
+                    p(class="price price-"+infoBlock.id) #{infoBlock.Price}
+                    .uah-per-div 
+                      p.uah грн
+                      p.per шт
+                    div(class='select-list-div select-list-div-' + infoBlock.id)
+                      each thing in infoDB 
+                        if (!(thing.Breed === infoBlock.Breed && thing.Country != infoBlock.Country))
+                        else  
+                          div(class='country-tick-div country-tick-div-'+infoBlock.id)
+                            p.country-tick ∨
+                      .country-image-div
+                        img(value=infoBlock.Country class="actual-country actual-country-"+infoBlock.id src='countries/' + infoBlock.Country + '.png', alt="")
+                      each thing in infoDB 
+                        if (thing.Breed === infoBlock.Breed && thing.Country !== infoBlock.Country)
+                          div(class="country-choice country-choice-"+infoBlock.id)
+                        
+                            img(value=thing.Country class='optional-country optional-country-'+ infoBlock.id src="countries/"+thing.Country+'.png', alt="")
+                            div(value=thing.Price class='temporary-'+infoBlock.id, hidden)
+                button(name="offer" class="order-button order-button-"+infoBlock.id)
+                  p Замовити      
+                +ChooseCountry(infoBlock)
+                +AnimateSelector(infoBlock) 
+                +ActiveOrder(infoBlock)
+                
+                
+
+//- all mixins
+
+body.assortment-page
+  
+  .colorline
+
+  header.header
+    .left-section
+      .tab-viber
+        a.viber-link(href="https://invite.viber.com/?g2=AQA4yI8%2BlT9hGlAfDcU8Ppxuo9ol5KfWWe6KLe2IPjdR%2BBKG5UcuGoAO3%2FDc5%2Bcg" target="_blank" rel="noopener noreferrer") 
+          img(src="icons/viber.svg" height="60px")
+      
+      
+      
+    .middle-section
+      a.main-link(href='/')
+        .logo-div
+          img.logo(src='icons/logo.svg' alt='')
+        .inc-name-div
+          img.inc-name(src='icons/name.svg' alt='')
+    .right-section
+      .right-tabs-section
+        form(action="/checkout")
+          button.div-img-cart
+            img.img-cart(src='icons/caret.svg' alt='') 
+            .cart-eggs-quantity
+              p 
+      
+  main#swap.transition-main.main-div
+
+    .order-preview
+      .x-order-preview 
+        p x
+      .OP-breed
+        p
+      .OP-chicken-image-div 
+        img(max-height="200px" height="100%")      
+      .OP-infoBlock 
+        .OP-actual-country-div 
+          p.OP-actual-country Виробник
+            br
+            img(height="55px" width="55px")    
+        div.OP-price-div
+          p.OP-price-title Ціна
+          p.OP-price
+          p.OP-per-uah грн/шт          
+        .OP-quantity 
+          p Кількість
+          input(name='eggQuantity' type="text" placeholder="..." maxlength="5" minlength="2" )
+      button.OP-add-to-cart Додати у кошик
+
+    .js-shadow-maker
+    section(class= x % 5 === 0 ? 'ALT-full-grid-block' : 'full-grid-block')
+      form.navigation-bar(action="/assortment", method="GET")
+        .navigation-button-link
+          button(action="/assortment") Усе
+        .navigation-button-link
+          button(name="sorter", value="Кури") Кури
+        .navigation-button-link
+          button(name="sorter", value ="Качки") Качки
+        .navigation-button-link
+          button(name="sorter", value ="Індики") Індики
+        .navigation-button-link
+          button(name="sorter", value ="Гуси") Гуси 
+      form.search-form()
+        input.assortment-search(name="search" type="text", placeholder="Пошук..." id="assortment-search")
+        .assortment-search-div
+          button.btn-magnifier
+            img.img-magnifier(src="icons/magnifier.svg" height="25px")
+
+
+      -let prev
+      each infoBlock in infoDB  
+        
+        if (!(prev && prev === infoBlock.Breed))
+          +GenerateOfferBlock(infoBlock)
+          - prev = infoBlock.Breed;
+      +AddToCart 
+      +SearchBar
+      if (!infoDB[0]) 
+          .no-results 
+            p Немає результатів...
+      
+          
+  footer.assortment-footer
+    .foot-tel-block
+      img(src="icons/phone.svg" height="18px")
+      p +380 99 181 73 46 ( Олег )
+  script(src='js/main.js' type='module')
+  script(defer src="js/swup.js" type="module")
+
+noscript
+  style(type="text/css")
+  body(style='display: none')
