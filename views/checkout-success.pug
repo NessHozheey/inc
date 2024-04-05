@@ -40,37 +40,38 @@ body.checkout
       .checkout-OP-img-div
         img(src="icons/logo.png" height='200px')
 
-      .div-conditions
-        p Ваше замовлення відправлено на опрацювання!
+      .div-conditions.success
+        p Ваше замовлення на опрацюванні!
         p Через деякий час ми зв'яжемось з вами. 
         p Дякуємо, що обрали Інкубаторію!
     .primary-container
 
+    .primary-container
       form.clientForm(method="POST")
         p.title-contacts Контактні дані
-        label.lastname(for="Lastname") Прізвище
+        label.lastname(for="inputLastName") Прізвище
           p.tick ✔️
         input#inputLastName(correct="false" type="text" maxlength='18' pattern="[^\s]*" name="Lastname")
-        label.firstname(for="Firstname" ) Ім'я
+        label.firstname(for="inputFirstName" ) Ім'я
           p.tick ✔️
         input#inputFirstName(correct="false" type="text" maxlength="15" pattern="[^\s]*" name="Firstname")
-        label.tel(for="Tel") Телефон 
+        label.tel(for="inputTel") Телефон 
           p.tick ✔️
         .tel-div
           .code-div
             p.country-code +38
           input#inputTel(correct="false" type="tel", name="Tel" placeholder="(__) ___-__-__" )
-        label.city(for="City" ) Місто доставки 
+        label.city(for="inputCity" ) Місто доставки 
           p.tick ✔️
         input#inputCity(correct="false" type="text", name="City", maxlength="70")
-        label.post(for="Postal" ) Відділення Нової Пошти
+        label.post(for="inputPostal" ) Відділення Нової Пошти
           p.tick ✔️
           
         input#inputPostal(correct="false" type="text", name="Postal" maxlength="10")
         input.inputHiddenBreed( type='hidden' name='order')
-        button.buttonSubmit(correct="false" type="submit") Замовлення підтверджено!
+        button.buttonSubmit(correct="false" type="submit" disabled) Замовлення підтверджено!
 
-      .subprimary-column-container
+      .subprimary-column-container.checker
         .div-ordered
         .checkout-title-order 
           p Замовлення
@@ -87,53 +88,72 @@ body.checkout
             p.checkDeliveryPrice
             p.checkTotalPrice 
         button.show-conditions Замовлення опрацьовується...
-   
-      script(type="module"). 
-        import {cart, removeFromCart, cartToHTML, setItemsQuantity, totalQuantity, clearCart, calculateCartPrice} from './js/cart.mjs'
-        $(() => {
-            cartToHTML()
-            clearCart()
-            $(".changePick").hide()
-            $(".trashImg").hide()
-            setTimeout(() => {
-              $("button.show-conditions").trigger('click')
-            }, 2000)
-            
-            
-            $(".clientForm, p.title-contacts").css({
-              border: "2px solid lightgreen",
-              boxShadow: "0 0 10px lightgreen"
-            })
-           $("#inputLastName").val(null).prop("disabled", "true")
-            $("#inputFirstName").val(null).prop("disabled", "true")
-            $("#inputTel").val(null).prop("disabled", "true")
-            $("#inputCity").val(null).prop("disabled", "true")
-            $("#inputPostal").val(null).prop("disabled", "true")
 
-            $(".buttonSubmit").css({
-              border: "2px solid lightgreen",
-              backgroundColor: "lightgreen",
-              color: "white"
-            })
-            //- ordered-div functionality
+      script(type="module"). 
+        import {cart, clearCart, cartToHTML, setItemsQuantity, totalQuantity, calculateCartPrice} from './js/cart.mjs'
+        
+        $(() => {
           
-          
-          //---------------------------------------------------
-          
+          cartToHTML()
+          clearCart()
+          $(".changePick").hide()
+          $(".trashImg").hide()
+          setTimeout(() => {
+            $("button.show-conditions").trigger('click')
+          }, 2000)
+
+          $(".clientForm, p.title-contacts").css({
+            
+            border: "2px solid lightgreen",
+            boxShadow: "0 0 10px lightgreen"
+
+          })
+
+          $("#inputLastName").prop("disabled", "true")
+          $("#inputFirstName").prop("disabled", "true")
+          $("#inputTel").prop("disabled", "true")
+          $("#inputCity").prop("disabled", "true")
+          $("#inputPostal").prop("disabled", "true")
+
+          $(".buttonSubmit").css({
+
+            border: "2px solid lightgreen",
+            backgroundColor: "lightgreen",
+            color: "white"
+
+          })
+
           //- Delivery info preview
           $(".show-conditions").on('click', () => {
+
+          $(".header").css({zIndex: 50})
+          
+          $(".link-back-div").css({
+            zIndex: '1'
+          })
+
           $(".order-preview").css({
             display: 'flex'
           })
+
           $(".js-shadow-maker").removeClass("shadow-maker-removed")
           $(".js-shadow-maker").addClass("shadow-maker")
-            setTimeout(() => {
-              $('.shadow-maker').css({
-                backdropFilter: 'blur(7px)'
-                })
+
+          setTimeout(() => {
+            $('.shadow-maker').css({
+              backdropFilter: 'blur(7px)',
+              position: 'fixed',
+              top: 0, bottom: 0, left: 0, right: 0
+
             })
-          })
+          }, 50)
+
           $(".x-order-preview").on('click', () => {
+          $(".link-back-div").css({
+            zIndex: '10000'
+          })
+            $(".header").css({zIndex: 10000})
+
                 $(".order-preview").css({
                   display: "none"
                 })
@@ -145,15 +165,13 @@ body.checkout
               $('.js-shadow-maker').removeClass("shadow-maker")
           }, 200)
           })
-          //--------------------------------------------------------
-          
-          
-          
-          $("form.clientForm").on('submit', (e) => {            
-            e.preventDefault()
-          })
-          
-          
         })
+         
+          
+          })
         
   script(defer src="js/swup.js" type="module")
+
+noscript
+  style(type="text/css")
+  body(style='display: none')

@@ -1181,7 +1181,7 @@ a.link-back-div {
     }
 
     .checkout-OP-img-div img {
-        height: 170px;
+        height: 200px;
     }
 }
 @media only screen and (max-width: 480px) {
@@ -1345,9 +1345,12 @@ p.gold {
     }
 
     /* CHECKOUT */
-
+    
+}
+@media only screen and (max-width: 424px) {
     .div-conditions p {
         line-height: 30px;
         font-size: 15px;
     }
+    
 }

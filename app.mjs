@@ -9,7 +9,7 @@ dotenv.config()
 const app = express();
 
 let transporter = nodemailer.createTransport({
-  service: 'hotmail',
+  service: 'gmail',
   auth: {
     user: process.env.ENV_MAIL,
     pass: process.env.ENV_PASS
@@ -35,7 +35,16 @@ async function sendOrder(Lastname, Firstname, Tel, City, Postal, Order) {
   console.log(info.messageId)
 }
 
+/*async function testSend() {
+  let info = await transporter.sendMail({
+    from: `${process.env.FROM} <${process.env.ENV_MAIL}>`,
+    to: process.env.ENV_PRO,
+    subject: 'test',
+    html: 'test'
+  })
 
+  return info.messageId
+}*/
 
 
 app.set('view engine', 'pug');
@@ -47,10 +56,6 @@ app.use(express.urlencoded({extended: true}))
 app.get('/', async (req, res) => {
   res.render('index')
 })
-app.get('/att', async (req, res) => {
-  res.render('att')
-})
-
 
 
 app.get('/assortment', async(req, res) => {
