@@ -145,7 +145,7 @@ export function setItemsQuantity() {
     $(".checkout-title-quantity").text('Ви ще нічого не додавали до корзини.')
     $(".checkout-title-quantity-div").css({
       justifyContent: "center",
-      top: '150px',
+      top: '150px'
     })
     updatePriceDiv()
    
