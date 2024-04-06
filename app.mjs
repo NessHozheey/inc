@@ -82,7 +82,7 @@ app.post('/checkout', async(req,res) => {
   res.render('checkout-success')
 })
 
-let port = process.env.PORT || 8080
+let port = process.env.PORT
 app.listen(port, () => {
   console.log(`started on ${port}`)
 });
