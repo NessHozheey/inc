@@ -359,7 +359,7 @@ body.assortment-page
 
       -let prev
       each infoBlock in infoDB  
-       
+        
         if (!(prev && prev === infoBlock.Breed))
           +GenerateOfferBlock(infoBlock)
           - prev = infoBlock.Breed;

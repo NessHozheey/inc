@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.mjs"
+    "start": "node app.mjs",
+    "dev": "npx nodemon app.mjs"
   },
   "keywords": [],
   "author": "",
@@ -13,10 +14,12 @@
   "dependencies": {
     "@barba/core": "^2.9.7",
     "@barba/css": "^2.1.15",
+    "@smithy/smithy-client": "^2.5.1",
     "dotenv": "^16.4.5",
     "express": "^4.18.3",
     "fs": "^0.0.1-security",
     "fullpage.js": "^4.0.22",
+    "fuse.js": "^7.0.0",
     "gsap": "^3.12.5",
     "mysql2": "^3.9.2",
     "nodemailer": "^6.9.13",

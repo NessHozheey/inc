@@ -2,11 +2,14 @@ import express from 'express'
 import nodemailer from 'nodemailer'
 import mysql from 'mysql2'
 import path from 'path'
-import {pool, sqlBasic, getInfoFromDB} from './db.mjs'
+import {getInfoFromDB} from './db.mjs'
 import  http  from 'http'
 import dotenv from 'dotenv'
+import infoDB from './Database/eggs_assortment.json' with {type: 'json'}
 dotenv.config()
 const app = express();
+
+
 
 let transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -46,7 +49,6 @@ async function sendOrder(Lastname, Firstname, Tel, City, Postal, Order) {
   return info.messageId
 }*/
 
-
 app.set('view engine', 'pug');
 app.use(express.static("public"))
 app.use(express.urlencoded({extended: true}))
@@ -60,7 +62,7 @@ app.get('/', async (req, res) => {
 
 app.get('/assortment', async(req, res) => {
   let term = req.query.search || req.query.sorter
-  let infoDB = await getInfoFromDB(term)
+  
   res.render('assortment', {
     infoDB
   })
