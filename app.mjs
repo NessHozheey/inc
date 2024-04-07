@@ -37,7 +37,7 @@ async function sendOrder(Lastname, Firstname, Tel, City, Postal, Order, rawPrice
      
      `
   })
-
+  console.log(info.messageId)
 }
 
 /*async function testSend() {
