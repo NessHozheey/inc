@@ -5,7 +5,6 @@ import path from 'path'
 import {getInfoFromDB} from './db.mjs'
 import  http  from 'http'
 import dotenv from 'dotenv'
-import tryDB from './Database/try.json' with {type: 'json'}
 dotenv.config()
 const app = express();
 
