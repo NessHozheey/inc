@@ -67,6 +67,8 @@ body.checkout
           
         input#inputPostal(correct="false" type="text", name="Postal" maxlength="10")
         input.inputHiddenBreed( type='hidden' name='order')
+        input.inputHiddenPrice( type="hidden" name='Price')
+        input.inputHiddenTotal( type="hidden" name='Total')
         button.buttonSubmit(correct="false" type="submit" disabled) Підтвердити замовлення
 
       .subprimary-column-container.checker
@@ -326,6 +328,11 @@ body.checkout
               iter++;
              })
              $(".inputHiddenBreed").val(info)
+
+            let price = $(".numbers").children(".checkCartPrice").text()
+            let total = $(".numbers").children(".checkTotalPrice").text()
+             $(".inputHiddenPrice").val(price)
+             $(".inputHiddenTotal").val(total)
              $("button.buttonSubmit").text("Замовлення підтверджено!");
              
            

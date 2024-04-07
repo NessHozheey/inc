@@ -19,7 +19,7 @@ let transporter = nodemailer.createTransport({
   },
   tls: {rejectUnauthorized: false}
 })
-async function sendOrder(Lastname, Firstname, Tel, City, Postal, Order) {
+async function sendOrder(Lastname, Firstname, Tel, City, Postal, Order, rawPrice, Total) {
 
   let info = await transporter.sendMail({
     from: `${process.env.FROM} <${process.env.ENV_MAIL}>`,
@@ -32,7 +32,11 @@ async function sendOrder(Lastname, Firstname, Tel, City, Postal, Order) {
      <h1> Місто: ${City} </h1>
      <h1> Пошта: №${Postal} </h1>
      <p> ---------------- </p>
-     <h2> ${Order} </h2>`
+     <h2> ${Order} </h2>
+     <h3> Вартість без комплектації: ${rawPrice} </h3>
+     <h3> Повна вартість (без доставки): ${Total} </h3>
+     
+     `
   })
 
   console.log(info.messageId)
@@ -79,8 +83,10 @@ app.post('/checkout', async(req,res) => {
   const {City} = req.body
   const {Postal} = req.body
   const {order} = req.body
-
-  sendOrder(Lastname, Firstname, Tel, City, Postal, order)
+  const {Price} = req.body
+  const {Total} = req.body
+  
+  sendOrder(Lastname, Firstname, Tel, City, Postal, order, Price, Total)
   res.render('checkout-success')
 })
 

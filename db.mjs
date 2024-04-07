@@ -17,7 +17,8 @@ const fuseOptions = {
 const fuseOptionsAll = {
   threshold: 1,
   keys: [
-    "Breed"
+    "Breed",
+    "Species"
   ]
 }
 
@@ -29,9 +30,12 @@ const fuseAll = new Fuse(infoDB, fuseOptionsAll )
 
 export function getInfoFromDB (searchPattern) {
    
-  if (!searchPattern) { 
-     return fuseAll.search('а')}
-   
+  if (!searchPattern){
+     const result = fuseAll.search({
+      $or: [{ Species: "Кури" }, {Species: "Індики"}, {Species: "Качки"}, {Species: "Гуси"}]
+    })
+    return result
+  }
   else {
     return fuse.search(searchPattern) }
 }

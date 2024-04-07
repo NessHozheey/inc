@@ -256,7 +256,7 @@ mixin GenerateOfferBlock(infoBlock)
                       
 
                   .price-div
-                    p(class="price price-"+infoBlock.item.id) #{infoBlock.Price}
+                    p(class="price price-"+infoBlock.item.id) #{infoBlock.item.Price}
                     .uah-per-div 
                       p.uah грн
                       p.per шт
@@ -267,7 +267,7 @@ mixin GenerateOfferBlock(infoBlock)
                           div(class='country-tick-div country-tick-div-'+infoBlock.item.id)
                             p.country-tick ∨
                       .country-image-div
-                        img(value=infoBlock.item.Country class="actual-country actual-country-"+infoBlock.id src='countries/' + infoBlock.item.Country + '.png', alt="")
+                        img(value=infoBlock.item.Country class="actual-country actual-country-"+infoBlock.item.id src='countries/' + infoBlock.item.Country + '.png', alt="")
                       each thing in infoDB 
                         if (thing.item.Breed === infoBlock.item.Breed && thing.item.Country !== infoBlock.item.Country)
                           div(class="country-choice country-choice-"+infoBlock.item.id)
