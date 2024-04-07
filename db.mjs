@@ -14,20 +14,26 @@ const fuseOptions = {
   ]
 }
 
-const fuse = new Fuse(infoDB, fuseOptions)
+const fuseOptionsAll = {
+  threshold: 1,
+  keys: [
+    "Breed"
+  ]
+}
 
-console.log(fuse.search('лівонскеа'))
-console.log('------------------')
-let fuseDB = fuse.search('кура')
+const fuse = new Fuse(infoDB, fuseOptions)
+const fuseAll = new Fuse(infoDB, fuseOptionsAll )
+
 
   
 
-export async function getInfoFromDB (searchPattern) {
-   if (!searchPattern) return infoDB 
-  else return fuse.search(searchPattern)
-
-
-
+export function getInfoFromDB (searchPattern) {
+   
+  if (!searchPattern) { 
+     return fuseAll.search('а')}
+   
+  else {
+    return fuse.search(searchPattern) }
 }
 
 

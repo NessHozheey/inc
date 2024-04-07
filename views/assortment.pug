@@ -22,20 +22,20 @@ head
 mixin ChooseCountry(infoBlock)
   script. 
     $(document).ready(() => {
-      let ActualCountry = $(".actual-country-#{infoBlock.id}")
-      let OptionalCountry = $(".optional-country-#{infoBlock.id}")
-      let TempCountry = $(".temporary-#{infoBlock.id}")
+      let ActualCountry = $(".actual-country-#{infoBlock.item.id}")
+      let OptionalCountry = $(".optional-country-#{infoBlock.item.id}")
+      let TempCountry = $(".temporary-#{infoBlock.item.id}")
 
-      let ActualPriceDiv = $(".price-#{infoBlock.id}") 
-      let OptionalPriceValue = $(".temporary-#{infoBlock.id}").attr("value")
-      let DefaultPriceValue = #{infoBlock.Price}
-      let DefaultCountry = '#{infoBlock.Country}'
+      let ActualPriceDiv = $(".price-#{infoBlock.item.id}") 
+      let OptionalPriceValue = $(".temporary-#{infoBlock.item.id}").attr("value")
+      let DefaultPriceValue = #{infoBlock.item.Price}
+      let DefaultCountry = '#{infoBlock.item.Country}'
       ActualPriceDiv.attr("value", DefaultPriceValue)
       OptionalCountry.click (() => {
         TempCountry.attr("src", ActualCountry.attr("src")).attr("value", ActualCountry.attr("value"))
         ActualCountry.attr("src", OptionalCountry.attr("src")).attr("value", OptionalCountry.attr("value"))
         OptionalCountry.attr("src", TempCountry.attr("src")).attr("value", TempCountry.attr("value"))
-        $('.country-choice-#{infoBlock.id}').animate({
+        $('.country-choice-#{infoBlock.item.id}').animate({
           height: 'hide'
       })
         
@@ -53,17 +53,17 @@ mixin ChooseCountry(infoBlock)
 mixin AnimateSelector(infoBlock) 
   script. 
     $(document).ready(() => {
-      let CountryTickDiv = $(`.country-tick-div-#{infoBlock.id}`)
-      let CountryImageDiv = $(`.country-tick-div-#{infoBlock.id}`).siblings(".country-image-div")
+      let CountryTickDiv = $(`.country-tick-div-#{infoBlock.item.id}`)
+      let CountryImageDiv = $(`.country-tick-div-#{infoBlock.item.id}`).siblings(".country-image-div")
 
       CountryTickDiv.click(() => {
-        $('.country-choice-#{infoBlock.id}').animate({
+        $('.country-choice-#{infoBlock.item.id}').animate({
           height: 'toggle'
         })
       })
 
       CountryImageDiv.click(() => {
-        $('.country-choice-#{infoBlock.id}').animate({
+        $('.country-choice-#{infoBlock.item.id}').animate({
           height: 'toggle'
         })
       })
@@ -71,17 +71,17 @@ mixin AnimateSelector(infoBlock)
 mixin ActiveOrder(infoBlock) 
   script(type="module"). 
     $(() => {
-      $(".order-button-#{infoBlock.id}").on('click' , () => {
+      $(".order-button-#{infoBlock.item.id}").on('click' , () => {
                     //order preview start// 
         $(".header").css({zIndex: 50})
         $("input[name='eggQuantity']").attr('placeholder', '...')
-        $("input[name='eggQuantity']").attr('typeID', `#{infoBlock.TypeID}`)
+        $("input[name='eggQuantity']").attr('typeID', `#{infoBlock.item.TypeID}`)
         
         $("input[name='eggQuantity']").val(null)
 
-        $(".OP-chicken-image-div").children().attr("src", "#{infoBlock.ImageSRC}")
-        $(".OP-breed").children().html(`#{infoBlock.Breed}`)
-        if (`#{infoBlock.Breed}`.length >= 14) {
+        $(".OP-chicken-image-div").children().attr("src", "#{infoBlock.item.ImageSRC}")
+        $(".OP-breed").children().html(`#{infoBlock.item.Breed}`)
+        if (`#{infoBlock.item.Breed}`.length >= 14) {
           $(".OP-breed").children().css({
             fontSize: '38px'
           })
@@ -94,8 +94,8 @@ mixin ActiveOrder(infoBlock)
           display: "flex"
         })
         $("input[name='eggQuantity']").focus() 
-        let actualCountry = $('.actual-country-#{infoBlock.id}').attr("src")
-        let actualPrice = $('.price-#{infoBlock.id}').attr("value")
+        let actualCountry = $('.actual-country-#{infoBlock.item.id}').attr("src")
+        let actualPrice = $('.price-#{infoBlock.item.id}').attr("value")
 
         $(".OP-actual-country").children().attr('src', actualCountry)
         $('.OP-price').html(actualPrice)         
@@ -246,35 +246,35 @@ mixin AddToCart
 
     })
 mixin GenerateOfferBlock(infoBlock)
-              .full-offer-block(class="full-offer-block-"+infoBlock.id)
+              .full-offer-block(class="full-offer-block-"+infoBlock.item.id)
                 .chicken-image-div
-                  img.chicken-image(width='180' height='180' src=infoBlock.ImageSRC)
+                  img.chicken-image(width='180' height='180' src=infoBlock.item.ImageSRC)
                   
                 .info-block
                   .title-text-div
-                    p(class=`title-text title-text-`+ infoBlock.id) #{infoBlock.Breed} 
+                    p(class=`title-text title-text-`+ infoBlock.item.id) #{infoBlock.item.Breed} 
                       
 
                   .price-div
-                    p(class="price price-"+infoBlock.id) #{infoBlock.Price}
+                    p(class="price price-"+infoBlock.item.id) #{infoBlock.Price}
                     .uah-per-div 
                       p.uah грн
                       p.per шт
-                    div(class='select-list-div select-list-div-' + infoBlock.id)
+                    div(class='select-list-div select-list-div-' + infoBlock.item.id)
                       each thing in infoDB 
-                        if (!(thing.Breed === infoBlock.Breed && thing.Country != infoBlock.Country))
+                        if (!(thing.item.Breed === infoBlock.item.Breed && thing.item.Country != infoBlock.item.Country))
                         else  
-                          div(class='country-tick-div country-tick-div-'+infoBlock.id)
+                          div(class='country-tick-div country-tick-div-'+infoBlock.item.id)
                             p.country-tick ∨
                       .country-image-div
-                        img(value=infoBlock.Country class="actual-country actual-country-"+infoBlock.id src='countries/' + infoBlock.Country + '.png', alt="")
+                        img(value=infoBlock.item.Country class="actual-country actual-country-"+infoBlock.id src='countries/' + infoBlock.item.Country + '.png', alt="")
                       each thing in infoDB 
-                        if (thing.Breed === infoBlock.Breed && thing.Country !== infoBlock.Country)
-                          div(class="country-choice country-choice-"+infoBlock.id)
+                        if (thing.item.Breed === infoBlock.item.Breed && thing.item.Country !== infoBlock.item.Country)
+                          div(class="country-choice country-choice-"+infoBlock.item.id)
                         
-                            img(value=thing.Country class='optional-country optional-country-'+ infoBlock.id src="countries/"+thing.Country+'.png', alt="")
-                            div(value=thing.Price class='temporary-'+infoBlock.id, hidden)
-                button(name="offer" class="order-button order-button-"+infoBlock.id)
+                            img(value=thing.item.Country class='optional-country optional-country-'+ infoBlock.item.id src="countries/"+thing.item.Country+'.png', alt="")
+                            div(value=thing.item.Price class='temporary-'+infoBlock.item.id, hidden)
+                button(name="offer" class="order-button order-button-"+infoBlock.item.id)
                   p Замовити      
                 +ChooseCountry(infoBlock)
                 +AnimateSelector(infoBlock) 
@@ -360,13 +360,13 @@ body.assortment-page
       -let prev
       each infoBlock in infoDB  
         
-        if (!(prev && prev === infoBlock.Breed))
+        if (!(prev && prev === infoBlock.item.Breed))
           +GenerateOfferBlock(infoBlock)
-          - prev = infoBlock.Breed;
+          - prev = infoBlock.item.Breed;
           script. 
             $(() => {
 
-                let $titleText = $(`.title-text-#{infoBlock.id}`)
+                let $titleText = $(`.title-text-#{infoBlock.item.id}`)
                 if ($(document).width() > 420) {  
                   if ($titleText.text().length >= 14) {
                     $titleText.css({
@@ -385,8 +385,6 @@ body.assortment-page
           .no-results 
             p Немає результатів...
       
-    script. 
-      $(() => {console.log($(document).width())})      
   footer.assortment-footer
     .foot-tel-block
       img(src="icons/phone.svg" height="18px")

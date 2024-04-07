@@ -5,7 +5,7 @@ import path from 'path'
 import {getInfoFromDB} from './db.mjs'
 import  http  from 'http'
 import dotenv from 'dotenv'
-import infoDB from './Database/eggs_assortment.json' with {type: 'json'}
+import tryDB from './Database/try.json' with {type: 'json'}
 dotenv.config()
 const app = express();
 
@@ -62,7 +62,7 @@ app.get('/', async (req, res) => {
 
 app.get('/assortment', async(req, res) => {
   let term = req.query.search || req.query.sorter
-  
+  let infoDB = getInfoFromDB(term)
   res.render('assortment', {
     infoDB
   })

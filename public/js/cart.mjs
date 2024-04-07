@@ -198,7 +198,8 @@ export function cartToHTML() {
     
     ).appendTo(`.order-row-${e.cartID}`)
 
-    if ( (e.Breed).length > 14) {
+    
+    if ( `${e.Breed}`.length > 14) {
       $(".checkout-text-section").children(`p#checkBreed-${e.cartID}`).css({
         fontSize: '15px'
       })
