@@ -12,6 +12,9 @@ const app = express();
 
 let transporter = nodemailer.createTransport({
   service: 'gmail',
+  tls: {
+    ciphers: "SSLv3"
+  },
   auth: {
     user: process.env.ENV_MAIL,
     pass: process.env.ENV_PASS
@@ -93,7 +96,7 @@ app.post('/checkout', async(req,res) => {
   res.render('checkout-success')
 })
 
-let port = process.env.PORT
+let port = process.env.PORT || 5000
 app.listen(port, () => {
   console.log(`started on ${port}`)
 });
