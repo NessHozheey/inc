@@ -89,7 +89,7 @@ app.post('/checkout', async(req,res) => {
   const {Total} = req.body
   
  try {
-   sendOrder(Lastname, Firstname, Tel, City, Postal, order, Price, Total)
+   await sendOrder(Lastname, Firstname, Tel, City, Postal, order, Price, Total)
  } catch (error) {
   console.log(error)
  }
