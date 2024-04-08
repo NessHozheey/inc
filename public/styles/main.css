@@ -76,9 +76,9 @@
 
 .chickens-photo {
     height: 100%;
-    width: 100%;
+    width: 100.5%;
     object-fit: cover;
-    object-position: top;
+    object-position: center;
     
 }
 
@@ -549,10 +549,15 @@
     height: 100px;
 }
 
+
 .div-ontitle-arrow img {
     height: 100px;
 }
-
+@media only screen and (max-width: 1000px) {
+    .div-ontitle-arrow img {
+        height: 80px;
+    }
+}
 .OP-order-block {
     position: absolute;
     display: flex;
