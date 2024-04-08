@@ -629,7 +629,7 @@
   {
     "ImageSRC": "title-photos/62.png",
     "id": 62,
-    "Breed": "Блакитний Фаворит",
+    "Breed": "Фаворит",
     "TypeID": 10,
     "Country": "HU",
     "Price": "35",
@@ -651,7 +651,7 @@
   {
     "ImageSRC": "title-photos/64.png",
     "id": 64,
-    "Breed": "Мускусна (Індокачка)",
+    "Breed": "Мускусна (Індо)",
     "TypeID": 10,
     "Country": "HU",
     "Price": "35",
@@ -695,7 +695,7 @@
   {
     "ImageSRC": "title-photos/68.png",
     "id": 68,
-    "Breed": "Легард Датський",
+    "Breed": "Легард",
     "TypeID": 11,
     "Country": "HU",
     "Price": "65",
@@ -717,7 +717,7 @@
   {
     "ImageSRC": "title-photos/70.png",
     "id": 70,
-    "Breed": "Хайбрід Конвертер",
+    "Breed": "Хайбрід",
     "TypeID": 12,
     "Country": "HU",
     "Price": "85",
