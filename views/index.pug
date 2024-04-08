@@ -27,11 +27,11 @@ body.index-page
         h1.ontitle-text-h1 Відбірні інкубаційні яйця 
       .div-ontitle-h2
         h2.ontitle-text-h2 Для вашого хазяйства  
-      .div-ontitle-arrow.transition-arrow
-        img(src="icons/down_pointer.svg")
     a(href="/assortment")
       footer#div-text-assortment
         p.text-assortment Асортимент
+      .div-ontitle-arrow.transition-arrow
+        img(src="icons/down_pointer.svg")
   script. 
 
     $(() => {
@@ -44,20 +44,32 @@ body.index-page
       setTimeout(slideDownDivOntitle, 500)
       
       function arrowAnimation () {
-      $(".div-ontitle-arrow").animate({
-        bottom: '30vh',
-        opacity: '1'
-      }, 1000)
-      $(".div-ontitle-arrow").animate({
-        bottom: '11vh',
-        opacity: 0
-      }, 500)}
+        if ($(document).width() > 1000) {
+          $(".div-ontitle-arrow").animate({
+            bottom: '20%',
+            opacity: '1'
+          }, 1000)
+          $(".div-ontitle-arrow").animate({
+            bottom: '10%',
+            opacity: 0
+          }, 500)}
+        else {
+          $(".div-ontitle-arrow").animate({
+            bottom: '20%',
+            opacity: '1'
+          }, 1000)
+          $(".div-ontitle-arrow").animate({
+            bottom: '10%',
+            opacity: 0
+          }, 500)
+        } 
       
-      
+      }
+
       setTimeout(arrowAnimation, 1000)
       setInterval(arrowAnimation, 3000)
       
-
+      
       /* ...................... */
 
       

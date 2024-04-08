@@ -543,7 +543,7 @@
 .div-ontitle-arrow {
     opacity: 0;
     position: absolute;
-    bottom: 1vh;
+    bottom: 10%;
     left: 50%;
     transform: translate(-50%, 0);
     height: 100px;
