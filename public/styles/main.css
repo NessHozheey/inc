@@ -1354,3 +1354,13 @@ p.gold {
     }
     
 }
+@media only screen and (max-height: 650px) {
+    .div-ontitle-h1 {
+        
+        
+    }
+    .div-ontitle-h2 {
+        
+        top: 190px;
+    }  
+}
