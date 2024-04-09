@@ -288,7 +288,7 @@
   {
     "ImageSRC": "title-photos/30.png",
     "id": 30,
-    "Breed": "Італійська несучка",
+    "Breed": "Італійська",
     "TypeID": 1,
     "Country": "UA",
     "Price": "16",
@@ -299,7 +299,7 @@
   {
     "ImageSRC": "title-photos/31.png",
     "id": 31,
-    "Breed": "Італійська несучка",
+    "Breed": "Італійська",
     "TypeID": 3,
     "Country": "HU",
     "Price": "18.50",
@@ -805,7 +805,7 @@
   {
     "ImageSRC": "title-photos/82.png",
     "id": 82,
-    "Breed": "Лівенська Ситцева",
+    "Breed": "Лівенська",
     "TypeID": 5,
     "Country": "UA",
     "Price": "16",

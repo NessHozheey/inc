@@ -98,6 +98,20 @@ mixin ActiveOrder(infoBlock)
         let actualPrice = $('.price-#{infoBlock.item.id}').attr("value")
 
         $(".OP-actual-country").children().attr('src', actualCountry)
+      if ($(document).width() < 425) {
+        if (actualPrice.length > 2) {
+          $('.OP-price').css({
+            fontSize: '30px',
+            marginBottom: 0
+          })
+        } else {
+            $('.OP-price').css({
+              fontSize: '40px',
+              marginBottom: '-6px'
+            })
+            
+          }
+      }
         $('.OP-price').html(actualPrice)         
         $(".js-shadow-maker").removeClass("shadow-maker-removed")
         $(".js-shadow-maker").addClass("shadow-maker")

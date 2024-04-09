@@ -621,6 +621,11 @@
     font-size: 40px;
     margin-bottom: -6px;
 }
+@media only screen and(max-width: 1000px) {
+    .OP-price {
+        font-size: 30px;
+    }
+}
 
 
 
@@ -1360,10 +1365,6 @@ p.gold {
     
 }
 @media only screen and (max-height: 650px) {
-    .div-ontitle-h1 {
-        
-        
-    }
     .div-ontitle-h2 {
         
         top: 190px;
