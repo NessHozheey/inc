@@ -577,7 +577,7 @@
     "Breed": "Агідель",
     "TypeID": 10,
     "Country": "HU",
-    "Price": "35",
+    "Price": "30",
     "Category": "М'ясо-Яєчні",
     "Species": "Качки",
     "Keywords": "качка, качечки, качкі"
@@ -588,7 +588,7 @@
     "Breed": "Пекінка",
     "TypeID": 10,
     "Country": "HU",
-    "Price": "35",
+    "Price": "30",
     "Category": "М'ясо-Яєчні",
     "Species": "Качки",
     "Keywords": "качка, качечки, качкі"
@@ -599,7 +599,7 @@
     "Breed": "Черрі Веллі",
     "TypeID": 10,
     "Country": "HU",
-    "Price": "35",
+    "Price": "30",
     "Category": "М'ясо-Яєчні",
     "Species": "Качки",
     "Keywords": "качка, качечки, качкі"
@@ -610,7 +610,7 @@
     "Breed": "Ст-5 Орвія",
     "TypeID": 10,
     "Country": "HU",
-    "Price": "35",
+    "Price": "30",
     "Category": "М'ясо-Яєчні",
     "Species": "Качки",
     "Keywords": "качка, качечки, качкі"
@@ -621,7 +621,7 @@
     "Breed": "Стар 53",
     "TypeID": 10,
     "Country": "HU",
-    "Price": "35",
+    "Price": "30",
     "Category": "М'ясо-Яєчні",
     "Species": "Качки",
     "Keywords": "качка, качечки, качкі"
@@ -632,7 +632,7 @@
     "Breed": "Фаворит",
     "TypeID": 10,
     "Country": "HU",
-    "Price": "35",
+    "Price": "30",
     "Category": "М'ясо-Яєчні",
     "Species": "Качки",
     "Keywords": "качка, качечки, качкі"
@@ -643,7 +643,7 @@
     "Breed": "Башкірка",
     "TypeID": 10,
     "Country": "HU",
-    "Price": "35",
+    "Price": "30",
     "Category": "М'ясо-Яєчні",
     "Species": "Качки",
     "Keywords": "качка, качечки, качкі"
@@ -654,7 +654,7 @@
     "Breed": "Мускусна (Індо)",
     "TypeID": 10,
     "Country": "HU",
-    "Price": "35",
+    "Price": "30",
     "Category": "М'ясо-Яєчні",
     "Species": "Качки",
     "Keywords": "качка, качечки, качкі"
@@ -665,7 +665,7 @@
     "Breed": "Біла Горьковська",
     "TypeID": 11,
     "Country": "HU",
-    "Price": "65",
+    "Price": "60",
     "Category": "М'ясо-Яєчні",
     "Species": "Гуси",
     "Keywords": "белая горковська горковская"
@@ -676,7 +676,7 @@
     "Breed": "Сіра Горьковська",
     "TypeID": 11,
     "Country": "HU",
-    "Price": "65",
+    "Price": "60",
     "Category": "М'ясо-Яєчні",
     "Species": "Гуси",
     "Keywords": "серая горковська горковская"
@@ -687,7 +687,7 @@
     "Breed": "Сіра Велика",
     "TypeID": 11,
     "Country": "HU",
-    "Price": "65",
+    "Price": "60",
     "Category": "М'ясо-Яєчні",
     "Species": "Гуси",
     "Keywords": "серая большая "
@@ -698,7 +698,7 @@
     "Breed": "Легард",
     "TypeID": 11,
     "Country": "HU",
-    "Price": "65",
+    "Price": "60",
     "Category": "М'ясо-Яєчні",
     "Species": "Гуси",
     "Keywords": "лєгард"
@@ -709,7 +709,7 @@
     "Breed": "Лінда",
     "TypeID": 11,
     "Country": "HU",
-    "Price": "65",
+    "Price": "60",
     "Category": "М'ясо-Яєчні",
     "Species": "Гуси",
     "Keywords": "линда"
