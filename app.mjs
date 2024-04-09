@@ -21,6 +21,8 @@ let transporter = nodemailer.createTransport({
   },
   tls: {rejectUnauthorized: false}
 })
+
+
 async function sendOrder(Lastname, Firstname, Tel, City, Postal, Order, rawPrice, Total) {
 
   let info = await transporter.sendMail({
