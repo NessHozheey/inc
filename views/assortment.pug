@@ -188,36 +188,37 @@ mixin AddToCart
           let duckMinOrder = 15
 
           function inputChecker(minOrder) {
-            if (!iEggQuantity.val() ||!$.isNumeric(iEggQuantity.val()) ) {
-              iEggQuantity.addClass('warningFocus')
-                .trigger("focus")
-              
-              setTimeout( () => {
-                iEggQuantity.removeClass('warningFocus')},1000)
-            }
-            else if ( 
-            (iEggQuantity.val() < minOrder || iEggQuantity.val() > 7000) ) {
-              
-              iEggQuantity.addClass('red-border-warning')
             
-              setTimeout( () => {
-                iEggQuantity.removeClass('red-border-warning')},1000)
-                iEggQuantity.val(null)
-                  .attr('placeholder', `>${(minOrder - 1)}`)
+              if (!iEggQuantity.val() ||!$.isNumeric(iEggQuantity.val()) || iEggQuantity.val() % 1 !== 0  ) {
+                iEggQuantity.addClass('warningFocus')
+                  .trigger("focus")
                 
-            }
-            else if (( totalQuantity() + Number(iEggQuantity.val()) ) > 7000) {
-              $(".OP-add-to-cart").css({
-                backgroundColor: 'red'
-              },500).text("Ліміт: 7000 шт.")
-              iEggQuantity.val(null)
-              setTimeout( () => {
+                setTimeout( () => {
+                  iEggQuantity.removeClass('warningFocus')},1000)
+              }
+              else if ( 
+              (iEggQuantity.val() < minOrder || iEggQuantity.val() > 7000) ) {
+                
+                iEggQuantity.addClass('red-border-warning')
+              
+                setTimeout( () => {
+                  iEggQuantity.removeClass('red-border-warning')},1000)
+                  iEggQuantity.val(null)
+                    .attr('placeholder', `>${(minOrder - 1)}`)
+                  
+              }
+              else if (( totalQuantity() + Number(iEggQuantity.val()) ) > 7000) {
                 $(".OP-add-to-cart").css({
-                  backgroundColor: 'black'
-                }).text("Додати у кошик")
-              }, 1000)
-            }
-            
+                  backgroundColor: 'red'
+                },500).text("Ліміт: 7000 шт.")
+                iEggQuantity.val(null)
+                setTimeout( () => {
+                  $(".OP-add-to-cart").css({
+                    backgroundColor: 'black'
+                  }).text("Додати у кошик")
+                }, 1000)
+              }
+              
             else {
               let eggQuantity = iEggQuantity.val()
               let actualBreed = $('.OP-breed').children('p').html()
