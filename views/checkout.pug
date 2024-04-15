@@ -41,9 +41,9 @@ body.checkout
         img(src="icons/logo.png" height='200px')
 
       .div-conditions
-        p Замовлення виконується протягом 2-7 робочих днів. 
+        p Замовлення виконується протягом 1-7 робочих днів. 
         p Після підтвердження контактних даних ми зв'яжемось з вами щодо деталей.   
-        p Дякуємо, що ви з нами! 
+        p Дякуємо, що ви з нами!
     .primary-container
       form.clientForm(method="POST")
         p.title-contacts Контактні дані
@@ -113,7 +113,8 @@ body.checkout
             
             let verified = String.fromCharCode(e.which).match(/[а-яА-ЯіІїЇєЄ-]/);
             if (!verified) {
-            e.preventDefault();
+            e.preventDefault()
+            return false;
             }
           })
         iLastName.on('keydown keyup', () => {
@@ -156,6 +157,7 @@ body.checkout
             let verified = String.fromCharCode(e.which).match(/[0-9]/);
             if (!verified) {
             e.preventDefault();
+            return false;
             }
           })
          
@@ -191,6 +193,7 @@ body.checkout
             let verified = String.fromCharCode(e.which).match(/[а-яА-Яіїє ,.-]/);
             if (!verified) {
             e.preventDefault();
+            return false;
             }
 
          })
@@ -217,6 +220,7 @@ body.checkout
             let verified = String.fromCharCode(e.which).match(/[0-9]/);
             if (!verified) {
             e.preventDefault();
+            return false;
             }
           })
           

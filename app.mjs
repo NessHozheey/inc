@@ -30,14 +30,12 @@ async function sendOrder(Lastname, Firstname, Tel, City, Postal, Order, rawPrice
     to: process.env.ENV_PRO,
     subject: `*** Нове замовлення ${new Date().toLocaleString()} ***`,
     html: `
-     <h1> Прізвище: ${Lastname} </h1>
-     <h1> Ім'я: ${Firstname} </h1>
+     <h2> Ваше замовлення: ${Order} </h2>
+     <h1> П.І.Б: ${Lastname} ${Firstname}</h1>
      <h1> Телефон: ${Tel} </h1>
-     <h1> Місто: ${City} </h1>
-     <h1> Пошта: №${Postal} </h1>
+     <h1> Місто доставки: ${City} </h1>
+     <h1> Відділення Нової Пошти: №${Postal} </h1>
      <p> ---------------- </p>
-     <h2> ${Order} </h2>
-     <h3> Вартість без комплектації: ${rawPrice} </h3>
      <h3> Повна вартість (без доставки): ${Total} </h3>
      
      `
