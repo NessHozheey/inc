@@ -109,14 +109,14 @@ body.checkout
 
           
           
-          inputName.keypress(e => {
+          inputName.on( 'keydown', (e => {
             
-            let verified = String.fromCharCode(e.which).match(/[а-яА-ЯіІїЇєЄ-]/);
+            let verified = String.fromCharCode(e.key).match(/[а-яА-ЯіІїЇєЄ-]/);
             if (!verified) {
             e.preventDefault()
-            return false;
+            
             }
-          })
+          }))
         iLastName.on('keydown keyup', () => {
             if(iLastName.val().length > 2) {
               $(".lastname").children('p').css({
@@ -153,13 +153,13 @@ body.checkout
           //- INPUT TEL LIMITS
 
 
-          inputTel.keypress(e => {
-            let verified = String.fromCharCode(e.which).match(/[0-9]/);
+          inputTel.on( 'keydown', (e => {
+            let verified = String.fromCharCode(e.key).match(/[0-9]/);
             if (!verified) {
             e.preventDefault();
-            return false;
+            
             }
-          })
+          }))
          
         
           inputTel.on('keyup keydown', (e => {
@@ -189,14 +189,14 @@ body.checkout
           //-   CITY INPUT LIMITS  
 
 
-         inputCity.keypress(e => {
-            let verified = String.fromCharCode(e.which).match(/[а-яА-Яіїє ,.-]/);
+         inputCity.on( 'keydown', (e => {
+            let verified = String.fromCharCode(e.key).match(/[а-яА-Яіїє ,.-]/);
             if (!verified) {
             e.preventDefault();
-            return false;
+            
             }
 
-         })
+         }))
 
          inputCity.on('keyup keydown', () => {
            
@@ -216,13 +216,13 @@ body.checkout
           //--------------------------- 
           //-     INPUT POSTAL
 
-          inputPostal.keypress(e => {
-            let verified = String.fromCharCode(e.which).match(/[0-9]/);
+          inputPostal.on( 'keydown', (e => {
+            let verified = String.fromCharCode(e.key).match(/[0-9]/);
             if (!verified) {
             e.preventDefault();
-            return false;
+            
             }
-          })
+          }))
           
          inputPostal.on('keyup keydown', () => {
            if(inputPostal.val().length >= 1) {
