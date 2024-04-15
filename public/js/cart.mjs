@@ -187,7 +187,7 @@ export function cartToHTML() {
 
       $("<img>", {src: "icons/no.svg", class: `checkoutNo checkoutNo-${e.cartID}`, height: "17px"}).hide(),
 
-      $("<input>", {type: 'number',name: `${e.cartID}`,max: "10000", width: '30px', class: `forChange forChange-${e.cartID}`}).hide(),
+      $("<input>", {type: 'number',name: `${e.cartID}`,max: "7000", width: '30px', class: `forChange forChange-${e.cartID}`}).hide(),
 
       $("<p>").text(`${e.Price} ₴/шт.`).attr('id', 'checkPrice'),
       $("<img>").attr("src" , "icons/trashcan.svg").attr("class", "trashImg").attr("height", "18px").attr("id", `trashImg-${e.cartID}`).attr("value", `${e.cartID}`),
@@ -269,7 +269,13 @@ export function cartToHTML() {
             Input.attr('placeholder', `>${(minOrder - 1)}`)
            
           } 
-          else if ((Number(totalQuantity()) - Number(e.Quantity) + Number(Input.val()) )
+          else if (Input.val() % 1 !== 0) {
+            Input.addClass('red-border-warning')
+            setTimeout( () => {
+              Input.removeClass('red-border-warning')},1000)
+              Input.val(null) 
+          }
+          else if ((Number(totalQuantity()) - Number(e.Quantity) + Number(Input.val()))
             > 7000) {
 
               Input.addClass('red-border-warning')
