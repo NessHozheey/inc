@@ -291,6 +291,10 @@ body.checkout
               $('.js-shadow-maker').removeClass("shadow-maker")
           }, 200)
           })
+
+        $(".js-shadow-maker").on('click', () => {
+          $(".x-order-preview").trigger('click')
+        })
         })
           //--------------------------------------------------------
           

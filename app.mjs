@@ -60,7 +60,6 @@ app.use(express.static("public"))
 app.use(express.urlencoded({extended: true}))
 
 
-
 app.get('/', async (req, res) => {
   res.render('index')
 })

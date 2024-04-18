@@ -141,6 +141,9 @@ mixin ActiveOrder(infoBlock)
             $("input[name='eggQuantity']").prop('disabled', false)
             $("input[name='eggQuantity']").removeClass('input-locked')
         })
+        $(".js-shadow-maker").on('click', () => {
+          $(".x-order-preview").trigger('click')
+        })
       })
                   // order preview finish // 
 

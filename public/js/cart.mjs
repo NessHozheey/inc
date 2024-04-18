@@ -336,14 +336,7 @@ export function cartToHTML() {
 
       if (e.TypeID > 10) 
         quantityChecker(GooseNTurkeyMinOrder)
-      
-    
-     
-      
-      
-      
-
-              
+             
     })
     
     
