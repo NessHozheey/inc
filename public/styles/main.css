@@ -79,7 +79,7 @@
     width: 100.5%;
     object-fit: cover;
     object-position: center;
-    
+    opacity: 0;
 }
 
 #link {
