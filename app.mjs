@@ -30,14 +30,18 @@ async function sendOrder(Lastname, Firstname, Tel, City, Postal, Order, rawPrice
     to: process.env.ENV_PRO,
     subject: `*** Нове замовлення ${new Date().toLocaleString()} ***`,
     html: `
-     <h2> Ваше замовлення: ${Order} </h2>
-     <h1> П.І.Б: ${Lastname} ${Firstname}</h1>
-     <h1> Телефон: ${Tel} </h1>
-     <h1> Місто доставки: ${City} </h1>
-     <h1> Відділення Нової Пошти: №${Postal} </h1>
-     <p> ---------------- </p>
-     <h3> Повна вартість (без доставки): ${Total} </h3>
+    Ваше замовлення: ${Order}
+
+    П.І.Б: ${Lastname} ${Firstname}
+    Номер телефону: +38${Tel}
+    Місто доставки: ${City} 
+    Відділення Нової Пошти: №${Postal}
      
+    Вартість замовлення: ${Total}
+    Передплата (~30%): ${Math.round(Math.round(Total) * 0.3)} 
+
+    Реквізити (монобанк): ${process.env.REQ}
+    (${process.env.REQ_NAME})
      `
   })
   console.log('Sent successfully! Message id below...')
