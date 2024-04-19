@@ -64,8 +64,10 @@ body.checkout
         input#inputCity(correct="false" type="text", name="City", maxlength="70")
         label.post(for="inputPostal" ) Відділення Нової Пошти
           p.star *
-          
-        input#inputPostal(correct="false" type="text", name="Postal" maxlength="10")
+        .postal-div 
+          .code-div 
+            p.number-code № 
+          input#inputPostal(correct="false" type="text", name="Postal" maxlength="10")
         input.inputHiddenBreed( type='hidden' name='order')
         input.inputHiddenPrice( type="hidden" name='Price')
         input.inputHiddenTotal( type="hidden" name='Total')

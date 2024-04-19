@@ -825,7 +825,7 @@ main.checkout {
     height: 100%;
 }
 
-.tel-div {
+.tel-div, .postal-div {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -835,6 +835,15 @@ main.checkout {
     position: absolute;
     top: 10.3px;
     left: 4px;
+    color: rgb(56, 56, 56);
+    font-size: 17px;
+    font-family: Arial;
+    font-weight: 600;
+}
+.number-code {
+    position: absolute;
+    top: 10.3px;
+    left: 8px;
     color: rgb(56, 56, 56);
     font-size: 17px;
     font-family: Arial;
@@ -893,12 +902,19 @@ input#inputTel {
 .clientForm input::placeholder {
     margin-top: 5px;
 }
-#inputTel {
+#inputTel, #inputPostal {
     width: 100%;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
 }
+#inputPostal {
+    margin-left: 0;
+    
+}
 
+#inputPostal p {
+    text-align: center;
+}
 
 
 p.star {
