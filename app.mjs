@@ -24,7 +24,7 @@ let transporter = nodemailer.createTransport({
 
 
 async function sendOrder(Lastname, Firstname, Tel, City, Postal, Order, rawPrice, Total) {
-    let prePay = Math.round(rawPrice) * 0.3
+    let prePay = Math.round(Math.round(rawPrice) * 0.3 + 21)
   let info = await transporter.sendMail({
     from: `${process.env.FROM} <${process.env.ENV_MAIL}>`,
     to: process.env.ENV_PRO,
