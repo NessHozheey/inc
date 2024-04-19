@@ -24,24 +24,26 @@ let transporter = nodemailer.createTransport({
 
 
 async function sendOrder(Lastname, Firstname, Tel, City, Postal, Order, rawPrice, Total) {
-
+    let prePay = Math.round(rawPrice) * 0.3
   let info = await transporter.sendMail({
     from: `${process.env.FROM} <${process.env.ENV_MAIL}>`,
     to: process.env.ENV_PRO,
-    subject: `*** Нове замовлення ${new Date().toLocaleString()} ***`,
+    subject: `Нове замовлення ${new Date().toLocaleString()}`,
     html: `
-    Ваше замовлення: ${Order}
-
-    П.І.Б: ${Lastname} ${Firstname}
-    Номер телефону: +38${Tel}
-    Місто доставки: ${City} 
-    Відділення Нової Пошти: №${Postal}
-     
-    Вартість замовлення: ${Total}
-    Передплата (~30%): ${Math.round(Math.round(Total) * 0.3)} 
-
-    Реквізити (монобанк): ${process.env.REQ}
-    (${process.env.REQ_NAME})
+    <p>Ваше замовлення: </p>
+    <p> ${Order} </p>
+    <br>
+    <p>П.І.Б: ${Lastname} ${Firstname} </p>
+    <p>Номер телефону: +38${Tel} </p>
+    <p>Місто доставки: ${City}  </p>
+    <p>Відділення Нової Пошти: №${Postal} </p>
+    <br>
+    <p>Вартість замовлення: ${Total} </p>
+    <br>
+    <p>Передплата (~30%): ${prePay}₴ </p>
+    <br>
+    <p>Реквізити (монобанк): ${process.env.REQ} </p>
+    <p>(${process.env.REQ_NAME}) </p>
      `
   })
   console.log('Sent successfully! Message id below...')

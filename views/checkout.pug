@@ -328,7 +328,7 @@ body.checkout
             let iter = 1
              cart.forEach(e => {
               info += `${e.Breed} (${(e.Country).substring(10,12)}) - ${e.Quantity} шт. (${e.Price}₴/шт.) 
-               
+              <br>
 
                `
               iter++;
@@ -337,7 +337,7 @@ body.checkout
 
             let price = $(".numbers").children(".checkCartPrice").text()
             let total = $(".numbers").children(".checkTotalPrice").text()
-             $(".inputHiddenPrice").val(price)
+             $(".inputHiddenPrice").val(price.substring(price.length - 1, 0))
              $(".inputHiddenTotal").val(total)
              $("button.buttonSubmit").text("Замовлення підтверджується...");
              
