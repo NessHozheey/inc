@@ -67,7 +67,7 @@ body.checkout
         .postal-div 
           .code-div 
             p.number-code № 
-          input#inputPostal(correct="false" type="text", name="Postal" maxlength="10")
+          input#inputPostal(correct="false" type="text" name="Postal" maxlength="10")
         input.inputHiddenBreed( type='hidden' name='order')
         input.inputHiddenPrice( type="hidden" name='Price')
         input.inputHiddenTotal( type="hidden" name='Total')
@@ -93,6 +93,7 @@ body.checkout
 
       script. 
         $(() => {
+          
           $(".buttonSubmit").removeAttr('disabled')
           function limitInputVal (input, limitNumber) {
             
@@ -108,7 +109,6 @@ body.checkout
           let inputTel = $("input#inputTel")
           let inputCity = $("input#inputCity") 
           let inputPostal = $("input#inputPostal")
-
           
           
           inputName.keypress(e => {
@@ -163,7 +163,7 @@ body.checkout
          
         
           inputTel.on('keyup keydown', (e => {
-            $("input#inputTel").attr('value1', '38' + inputTel.val())
+            
             limitInputVal(inputTel, 10)
             
             if(inputTel.val().length == 10) {
@@ -254,6 +254,9 @@ body.checkout
           
           //---------------------------------------------------
           
+          
+
+
           //- Delivery info preview
           $(".show-conditions").on('click', () => {
           $(".header").css({zIndex: 50})

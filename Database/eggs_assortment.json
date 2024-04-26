@@ -16,7 +16,7 @@
     "Breed": "Блакитний D107",
     "TypeID": 1,
     "Country": "UA",
-    "Price": "16",
+    "Price": "17",
     "Category": "Несушки",
     "Species": "Кури",
     "Keywords": "домінант, дамінант, даминант, доминант"
@@ -38,7 +38,7 @@
     "Breed": "Бурий D102",
     "TypeID": 1,
     "Country": "UA",
-    "Price": "16",
+    "Price": "17",
     "Category": "Несушки",
     "Species": "Кури",
     "Keywords": "домінант, дамінант, даминант, доминант"
@@ -60,7 +60,7 @@
     "Breed": "Крапчатий D959",
     "TypeID": 1,
     "Country": "UA",
-    "Price": "16",
+    "Price": "17",
     "Category": "Несушки",
     "Species": "Кури",
     "Keywords": "домінант, дамінант, даминант, доминант"
@@ -82,7 +82,7 @@
     "Breed": "Суcсекс D104",
     "TypeID": 1,
     "Country": "UA",
-    "Price": "16",
+    "Price": "17",
     "Category": "Несушки",
     "Species": "Кури",
     "Keywords": "домінант, дамінант, даминант, доминант"
@@ -93,7 +93,7 @@
     "Breed": "Червоний D192",
     "TypeID": 1,
     "Country": "UA",
-    "Price": "16",
+    "Price": "17",
     "Category": "Несушки",
     "Species": "Кури",
     "Keywords": "домінант, дамінант, даминант, доминант"
@@ -115,7 +115,7 @@
     "Breed": "Білий D229",
     "TypeID": 1,
     "Country": "UA",
-    "Price": "16",
+    "Price": "17",
     "Category": "Несушки",
     "Species": "Кури",
     "Keywords": "домінант, дамінант, даминант, доминант"
@@ -132,12 +132,12 @@
     "Keywords": "домінант, дамінант, даминант, доминант"
   },
   {
-    "ImageSRC": "title-photos/16.png",
-    "id": 16,
+    "ImageSRC": "title-photos/17.png",
+    "id": 17,
     "Breed": "Декалб Уайт",
     "TypeID": 1,
     "Country": "UA",
-    "Price": "16",
+    "Price": "17",
     "Category": "Несушки",
     "Species": "Кури",
     "Keywords": "вайт"
@@ -159,7 +159,7 @@
     "Breed": "Декалб браун",
     "TypeID": 1,
     "Country": "UA",
-    "Price": "16",
+    "Price": "17",
     "Category": "Несушки",
     "Species": "Кури",
     "Keywords": null
@@ -225,7 +225,7 @@
     "Breed": "Ломан Уайт",
     "TypeID": 1,
     "Country": "UA",
-    "Price": "16",
+    "Price": "17",
     "Category": "Несушки",
     "Species": "Кури",
     "Keywords": "вайт"
@@ -269,7 +269,7 @@
     "Breed": "Браун Нік",
     "TypeID": 1,
     "Country": "UA",
-    "Price": "16",
+    "Price": "17",
     "Category": "Несушки",
     "Species": "Кури",
     "Keywords": "браун ник"
@@ -291,7 +291,7 @@
     "Breed": "Італійська",
     "TypeID": 1,
     "Country": "UA",
-    "Price": "16",
+    "Price": "17",
     "Category": "Несушки",
     "Species": "Кури",
     "Keywords": null
@@ -313,7 +313,7 @@
     "Breed": "Мікс Пасхальний",
     "TypeID": 5,
     "Country": "UA",
-    "Price": "16",
+    "Price": "17",
     "Category": "М'ясо-Яєчні",
     "Species": "Кури",
     "Keywords": "микс пасхальный"
@@ -324,7 +324,7 @@
     "Breed": "Гріз Сендрі",
     "TypeID": 5,
     "Country": "UA",
-    "Price": "16",
+    "Price": "17",
     "Category": "М'ясо-Яєчні",
     "Species": "Кури",
     "Keywords": "гриз сендри"
@@ -346,7 +346,7 @@
     "Breed": "Редбро",
     "TypeID": 5,
     "Country": "UA",
-    "Price": "16",
+    "Price": "17",
     "Category": "М'ясо-Яєчні",
     "Species": "Кури",
     "Keywords": null
@@ -368,7 +368,7 @@
     "Breed": "Фоксі Чик",
     "TypeID": 5,
     "Country": "UA",
-    "Price": "16",
+    "Price": "17",
     "Category": "М'ясо-Яєчні",
     "Species": "Кури",
     "Keywords": "фокси чик"
@@ -390,7 +390,7 @@
     "Breed": "Голошия Червона",
     "TypeID": 5,
     "Country": "UA",
-    "Price": "16",
+    "Price": "17",
     "Category": "М'ясо-Яєчні",
     "Species": "Кури",
     "Keywords": "голошейка голошийка испанка іспанка"
@@ -412,7 +412,7 @@
     "Breed": "Голошия Біла",
     "TypeID": 5,
     "Country": "UA",
-    "Price": "16",
+    "Price": "17",
     "Category": "М'ясо-Яєчні",
     "Species": "Кури",
     "Keywords": "голошейка голошийка испанка іспанка белая"
@@ -434,7 +434,7 @@
     "Breed": "Гріз бар",
     "TypeID": 5,
     "Country": "UA",
-    "Price": "16",
+    "Price": "17",
     "Category": "М'ясо-Яєчні",
     "Species": "Кури",
     "Keywords": "гриз бар"
@@ -467,7 +467,7 @@
     "Breed": "Тетра Н",
     "TypeID": 5,
     "Country": "UA",
-    "Price": "16",
+    "Price": "17",
     "Category": "М'ясо-Яєчні",
     "Species": "Кури",
     "Keywords": null
@@ -500,7 +500,7 @@
     "Breed": "Мастер Грей",
     "TypeID": 5,
     "Country": "UA",
-    "Price": "16",
+    "Price": "17",
     "Category": "М'ясо-Яєчні",
     "Species": "Кури",
     "Keywords": "майстер грей"
@@ -522,7 +522,7 @@
     "Breed": "СоССо",
     "TypeID": 5,
     "Country": "UA",
-    "Price": "16",
+    "Price": "17",
     "Category": "М'ясо-Яєчні",
     "Species": "Кури",
     "Keywords": null
@@ -555,7 +555,7 @@
     "Breed": "Мікс м'ясояєчний",
     "TypeID": 5,
     "Country": "UA",
-    "Price": "16",
+    "Price": "17",
     "Category": "М'ясо-Яєчні",
     "Species": "Кури",
     "Keywords": "микс, мясояичный, мясо-яичный, мікс мясо-яєчний"
@@ -566,7 +566,7 @@
     "Breed": "Адлір срібний",
     "TypeID": 5,
     "Country": "UA",
-    "Price": "16",
+    "Price": "17",
     "Category": "М'ясо-Яєчні",
     "Species": "Кури",
     "Keywords": "адлер адлір адлерська серебриста серебристий серебристая серебристый"
@@ -808,7 +808,7 @@
     "Breed": "Лівенська",
     "TypeID": 5,
     "Country": "UA",
-    "Price": "16",
+    "Price": "17",
     "Category": "М'ясо-Яєчні",
     "Species": "Кури",
     "Keywords": "ливонская, лівонська ситцева, лівонська, лівонська сицева"
