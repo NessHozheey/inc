@@ -266,7 +266,7 @@ mixin AddToCart
 mixin GenerateOfferBlock(infoBlock)
               .full-offer-block(class="full-offer-block-"+infoBlock.item.id)
                 .chicken-image-div
-                  img.chicken-image(width='180' height='180' src=infoBlock.item.ImageSRC)
+                  img.chicken-image(width='180' height='180' loading="lazy" src=infoBlock.item.ImageSRC)
                   
                 .info-block
                   .title-text-div
