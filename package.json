@@ -25,6 +25,7 @@
     "nodemailer": "^6.9.13",
     "path": "^0.12.7",
     "pug": "^3.0.2",
+    "selenium-webdriver": "^4.20.0",
     "swup": "^4.6.0"
   },
   "devDependencies": {

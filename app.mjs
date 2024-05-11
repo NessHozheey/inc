@@ -93,12 +93,16 @@ app.post('/checkout', async(req,res) => {
   const {Price} = req.body
   const {Total} = req.body
   
- try {
-   await sendOrder(Lastname, Firstname, Tel, City, Postal, order, Price, Total)
- } catch (error) {
-  console.log(error)
- }
-  res.render('checkout-success')
+  if (Lastname && Firstname && Tel && City && Postal && order && Price && Total ) {
+    try {
+      await sendOrder(Lastname, Firstname, Tel, City, Postal, order, Price, Total)
+    } catch (error) {
+      console.log(error)
+    }
+    res.render('checkout-success') 
+  } else {
+      return
+    } 
 })
 
 let port = process.env.PORT || 5000
